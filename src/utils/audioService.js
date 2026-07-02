@@ -65,7 +65,7 @@ class AudioService {
       src: ['/Happy_Birthday_Background_Score.mp3'],
       html5: true,
       loop: true,
-      volume: 0.5,
+      volume: 0.3,
       onloaderror: (id, err) => {
         console.warn("Primary background score failed to load, falling back to existing music", err);
         this.loadFallbackMusic();
