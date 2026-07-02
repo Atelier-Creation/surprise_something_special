@@ -270,6 +270,23 @@ class AudioService {
         osc.start(this.ctx.currentTime + index * 0.05);
         osc.stop(this.ctx.currentTime + 1.2);
       });
+    } else if (name === 'cameraClick') {
+      // Shutter sound effect (combination of high frequency burst and decay)
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(1200, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(100, this.ctx.currentTime + 0.12);
+
+      gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.12);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.12);
     }
   }
 }

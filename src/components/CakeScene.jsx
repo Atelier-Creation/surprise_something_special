@@ -195,7 +195,7 @@ export const CakeScene = ({ isActive }) => {
               transition={{ repeat: Infinity, duration: 1.5 }}
               className="absolute pointer-events-none z-30 bg-purple-600/90 px-4 py-2 rounded-full text-xs font-bold text-white border border-purple-300 shadow-md"
             >
-              🎂 Tap to cut!
+              🎂 Take the knife!
             </motion.div>
           )}
         </div>

@@ -56,7 +56,7 @@ export const WelcomeScreen = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, ease: 'easeOut' }}
-        className="w-full max-w-sm p-8 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-between min-h-[80vh]"
+        className="w-full max-w-sm p-8 rounded-3xl text-center relative z-20 flex flex-col justify-between min-h-[80vh]"
       >
         <motion.span
           animate={{ rotate: [0, 10, -10, 10, 0] }}

@@ -35,9 +35,9 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
-        handwritten: ['Pacifico', 'Caveat', 'cursive'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['Fraunces', 'sans-serif'],
+        handwritten: ['Fraunces', 'Caveat', 'cursive'],
+        serif: ['Fraunces','serif'],
       },
       animation: {
         'float-slow': 'float 8s ease-in-out infinite',

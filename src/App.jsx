@@ -12,6 +12,7 @@ import 'swiper/css/effect-fade';
 import WelcomeScreen from './components/WelcomeScreen';
 import BirthdayPopup from './components/BirthdayPopup';
 import CakeScene from './components/CakeScene';
+import CameraScene from './components/CameraScene';
 import CandleScene from './components/CandleScene';
 import CaptionScene from './components/CaptionScene';
 import BirthdayLetter from './components/BirthdayLetter';
@@ -52,27 +53,31 @@ const AppContent = () => {
         </SwiperSlide>
 
         <SwiperSlide className="w-full h-full">
-          <CandleScene isActive={currentSlide === 3} />
+          <CameraScene isActive={currentSlide === 3} />
         </SwiperSlide>
 
         <SwiperSlide className="w-full h-full">
-          <CaptionScene isActive={currentSlide === 4} />
+          <CandleScene isActive={currentSlide === 4} />
         </SwiperSlide>
 
         <SwiperSlide className="w-full h-full">
-          <BirthdayLetter isActive={currentSlide === 5} />
+          <CaptionScene isActive={currentSlide === 5} />
         </SwiperSlide>
 
         <SwiperSlide className="w-full h-full">
-          <GalleryScene isActive={currentSlide === 6} />
+          <BirthdayLetter isActive={currentSlide === 6} />
         </SwiperSlide>
 
         <SwiperSlide className="w-full h-full">
-          <FlipCards isActive={currentSlide === 7} />
+          <GalleryScene isActive={currentSlide === 7} />
         </SwiperSlide>
 
         <SwiperSlide className="w-full h-full">
-          <FinalScene isActive={currentSlide === 8} />
+          <FlipCards isActive={currentSlide === 8} />
+        </SwiperSlide>
+
+        <SwiperSlide className="w-full h-full">
+          <FinalScene isActive={currentSlide === 9} />
         </SwiperSlide>
       </Swiper>
 
