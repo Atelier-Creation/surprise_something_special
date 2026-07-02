@@ -48,7 +48,7 @@ export const CameraScene = ({ isActive }) => {
     {
       id: 3,
       src: theLegend,
-      caption: 'We are Legends',
+      caption: 'we are Legends',
     },
     {
       id: 4,
@@ -193,7 +193,7 @@ export const CameraScene = ({ isActive }) => {
       </AnimatePresence>
 
       {/* Navigation button */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
+      <div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
         <AnimatePresence>
           {revealedCount === 4 && (
             <motion.button
