@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
-
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Aurora';
+  src: url('./assets/font/Aurora.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @theme {
   --font-sans: "Fraunces", sans-serif;
   --font-serif: "Fraunces", serif;
   --font-handwritten: "Fraunces", "Caveat", cursive;
+  --font-aurora: "Aurora", serif;
 }
 
 @layer utilities {
@@ -110,4 +117,18 @@ body {
 
 .animate-flicker {
   animation: flicker 0.5s infinite ease-in-out alternate;
+}
+
+/* Custom Button styling override to #600411 */
+button.bg-gradient-to-r {
+  background-image: none !important;
+  background-color: #600411 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(96, 4, 17, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+button.bg-gradient-to-r:hover {
+  background-color: #7d0a1a !important;
+  box-shadow: 0 6px 20px rgba(96, 4, 17, 0.45) !important;
 }

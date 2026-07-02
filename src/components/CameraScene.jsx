@@ -5,31 +5,60 @@ import FloatingStickers from './common/FloatingStickers';
 import cameraImg from '../assets/camera_1.png';
 import confetti from 'canvas-confetti';
 
+// Import images
+import bestFriendsImg from '../assets/best_frends_for_ever.jpeg';
+import bigEarsImg from '../assets/i_got_big_ears.jpeg';
+import theLegend from '../assets/the-legend.jpeg';
+import pookieImg from '../assets/pookie.jpeg';
+
+const PolaroidCard = ({ photo, angle, onClick }) => (
+  <motion.div
+    initial={{ scale: 0.5, y: -40, opacity: 0, rotate: angle * 2 }}
+    animate={{ scale: 1, y: 0, opacity: 1, rotate: parseFloat(angle) }}
+    whileHover={{ scale: 1.05, zIndex: 30 }}
+    onClick={onClick}
+    className="bg-white p-2 pb-3 rounded shadow-md border border-slate-100 flex flex-col items-center cursor-pointer origin-center transform transition-shadow hover:shadow-lg w-[110px] md:w-[150px]"
+  >
+    <div className="w-full aspect-square overflow-hidden rounded bg-slate-50 mb-1.5 pointer-events-none">
+      <img src={photo.src} className="w-full h-full object-cover" alt="" />
+    </div>
+    <p className="font-handwritten text-[9px] md:text-[11px] text-[#600411] font-bold text-center leading-none mt-1 select-none pointer-events-none truncate w-full">
+      {photo.caption}
+    </p>
+  </motion.div>
+);
+
 export const CameraScene = ({ isActive }) => {
   const { nextSlide, playSFX } = useBirthday();
   const [revealedCount, setRevealedCount] = useState(0);
   const [flash, setFlash] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const memories = [
     {
       id: 1,
-      src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600',
-      caption: 'main character 💋',
+      src: bestFriendsImg,
+      caption: 'best frends for ever',
     },
     {
       id: 2,
-      src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=600',
-      caption: 'too cool ✌️',
+      src: bigEarsImg,
+      caption: 'i got big ears',
     },
     {
       id: 3,
-      src: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=600',
-      caption: 'tiny chaos 🐾',
+      src: theLegend,
+      caption: 'We are Legends',
+    },
+    {
+      id: 4,
+      src: pookieImg,
+      caption: 'pookie',
     },
   ];
 
   const handleCapture = () => {
-    if (revealedCount >= 3) return;
+    if (revealedCount >= 4) return;
 
     // Camera flash effect
     setFlash(true);
@@ -51,7 +80,7 @@ export const CameraScene = ({ isActive }) => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-start h-full w-full px-6 pt-12 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-start h-full w-full px-4 pt-6 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
       <FloatingStickers count={12} active={isActive} />
 
       {/* Camera Shutter Flash overlay */}
@@ -72,15 +101,15 @@ export const CameraScene = ({ isActive }) => {
         initial={{ opacity: 0, y: -20 }}
         animate={isActive ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="text-center mb-6 z-20"
+        className="text-center mb-2 z-20"
       >
-        <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-blue-500 block mb-1">
+        <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-blue-500 block mb-0.5">
           Captured Moments
         </span>
-        <h2 className="text-3xl font-bold text-purple-950 font-serif">
+        <h2 className="text-2xl md:text-3xl font-bold text-purple-950 font-serif">
           Press for a memory
         </h2>
-        <div className="w-12 h-1 bg-blue-500 mx-auto mt-2 rounded-full shadow-sm" />
+        <div className="w-10 h-0.5 bg-blue-500 mx-auto mt-1 rounded-full shadow-sm" />
       </motion.div>
 
       {/* Camera shutter circle */}
@@ -94,75 +123,79 @@ export const CameraScene = ({ isActive }) => {
         <motion.div
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.95 }}
-          className="w-[210px] h-[210px] rounded-full border-2 border-dashed border-blue-300 flex items-center justify-center bg-blue-50/10 backdrop-blur-sm relative"
+          className="w-[130px] h-[130px] rounded-full border-2 border-dashed border-blue-300 flex items-center justify-center bg-blue-50/10 backdrop-blur-sm relative"
         >
           <img
             src={cameraImg}
             alt="Camera"
-            className="w-32 h-32 object-contain filter drop-shadow-[0_4px_10px_rgba(59,130,246,0.15)]"
+            className="w-20 h-20 object-contain filter drop-shadow-[0_4px_10px_rgba(59,130,246,0.15)]"
           />
         </motion.div>
-        <p className="text-xs text-purple-900/60 font-semibold mt-4">
-          {revealedCount < 3
-            ? `Tap the camera · ${3 - revealedCount} memories left`
-            : "All memories captured! 💖"}
+        <p className="text-[10px] md:text-xs text-purple-900/60 font-semibold mt-2">
+          {revealedCount < 4
+            ? `Tap the camera · ${4 - revealedCount} memories left`
+            : "✦ every memory revealed"}
         </p>
       </motion.div>
 
-      {/* Polaroid cards stack area */}
-      <div className="relative w-full max-w-xs h-[230px] mt-2 flex justify-center items-start z-20">
-        <AnimatePresence>
-          {revealedCount >= 1 && (
-            <motion.div
-              initial={{ scale: 0.5, rotate: -45, y: -80, opacity: 0 }}
-              animate={{ scale: 0.85, rotate: -8, x: -50, y: 15, opacity: 1, zIndex: 10 }}
-              className="absolute bg-white p-2.5 pb-4 rounded-xl shadow-md border border-slate-100 w-[120px] flex flex-col items-center"
-            >
-              <div className="w-full aspect-square overflow-hidden rounded-lg bg-slate-50 mb-2">
-                <img src={memories[0].src} className="w-full h-full object-cover" alt="" />
-              </div>
-              <p className="font-handwritten text-[9px] text-purple-700 font-bold whitespace-nowrap">
-                {memories[0].caption}
-              </p>
-            </motion.div>
-          )}
-
-          {revealedCount >= 2 && (
-            <motion.div
-              initial={{ scale: 0.5, rotate: 45, y: -80, opacity: 0 }}
-              animate={{ scale: 0.85, rotate: 8, x: 50, y: 15, opacity: 1, zIndex: 11 }}
-              className="absolute bg-white p-2.5 pb-4 rounded-xl shadow-md border border-slate-100 w-[120px] flex flex-col items-center"
-            >
-              <div className="w-full aspect-square overflow-hidden rounded-lg bg-slate-50 mb-2">
-                <img src={memories[1].src} className="w-full h-full object-cover" alt="" />
-              </div>
-              <p className="font-handwritten text-[9px] text-purple-700 font-bold whitespace-nowrap">
-                {memories[1].caption}
-              </p>
-            </motion.div>
-          )}
-
-          {revealedCount >= 3 && (
-            <motion.div
-              initial={{ scale: 0.5, y: -80, opacity: 0 }}
-              animate={{ scale: 1, rotate: 0, x: 0, y: 45, opacity: 1, zIndex: 20 }}
-              className="absolute bg-white p-3 pb-5 rounded-md shadow-lg border border-slate-150 w-[140px] flex flex-col items-center"
-            >
-              <div className="w-full aspect-square overflow-hidden rounded-sm bg-slate-50 mb-2.5">
-                <img src={memories[2].src} className="w-full h-full object-cover" alt="" />
-              </div>
-              <p className="font-handwritten text-xs text-purple-700 font-bold whitespace-nowrap">
-                {memories[2].caption}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      {/* Symmetrical Polaroid Grid Area */}
+      <div className="w-full max-w-sm md:max-w-md flex flex-col items-center gap-3.5 z-20 overflow-y-auto max-h-[calc(100vh-270px)] scrollbar-none pb-20">
+        <div className="grid grid-cols-2 gap-4 w-full justify-items-center">
+          {revealedCount >= 1 && <PolaroidCard photo={memories[0]} angle="-4" onClick={() => setSelectedPhoto(memories[0])} />}
+          {revealedCount >= 2 && <PolaroidCard photo={memories[1]} angle="2" onClick={() => setSelectedPhoto(memories[1])} />}
+          {revealedCount >= 3 && <PolaroidCard photo={memories[2]} angle="-2" onClick={() => setSelectedPhoto(memories[2])} />}
+          {revealedCount >= 4 && <PolaroidCard photo={memories[3]} angle="4" onClick={() => setSelectedPhoto(memories[3])} />}
+        </div>
       </div>
 
+      {/* Fullscreen Lightbox Modal (Click to zoom like in Gallery) */}
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPhoto(null)}
+            className="fixed inset-0 z-50 bg-black/65 backdrop-blur-md flex items-center justify-center p-6 cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ scale: 0.8, rotate: -4 }}
+              animate={{ scale: 1, rotate: 0 }}
+              exit={{ scale: 0.8, rotate: 4 }}
+              transition={{ type: 'spring', damping: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white p-4 pb-7 rounded-xl shadow-2xl max-w-sm w-full flex flex-col items-center border border-slate-200"
+            >
+              {/* Close button */}
+              <div className="w-full flex justify-end mb-2">
+                <button 
+                  onClick={() => setSelectedPhoto(null)}
+                  className="text-slate-500 hover:text-slate-800 text-lg w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 cursor-pointer transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+              {/* Image Frame */}
+              <div className="w-full aspect-square overflow-hidden rounded bg-slate-100 shadow-inner mb-4">
+                <img 
+                  src={selectedPhoto.src} 
+                  className="w-full h-full object-cover select-none" 
+                  alt={selectedPhoto.caption} 
+                />
+              </div>
+              {/* Caption */}
+              <p className="font-handwritten text-lg md:text-xl text-[#600411] font-bold text-center select-none leading-none">
+                {selectedPhoto.caption}
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Navigation button */}
-      <div className="absolute bottom-22 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
         <AnimatePresence>
-          {revealedCount === 3 && (
+          {revealedCount === 4 && (
             <motion.button
               onClick={nextSlide}
               initial={{ opacity: 0, y: 15 }}
@@ -170,7 +203,7 @@ export const CameraScene = ({ isActive }) => {
               exit={{ opacity: 0 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-full text-white font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 backdrop-blur-md min-h-[48px] flex items-center justify-center whitespace-nowrap"
+              className="px-8 py-3 rounded-full text-white font-bold text-base bg-[#600411] hover:bg-[#7d0a1a] shadow-md shadow-[#600411]/20 min-h-[48px] flex items-center justify-center whitespace-nowrap cursor-pointer"
             >
               Continue ✨
             </motion.button>

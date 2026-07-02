@@ -45,7 +45,7 @@ export const FlipCards = ({ isActive }) => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={isActive ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-sm p-5 rounded-3xl text-center relative z-20 flex flex-col justify-between items-center min-h-[80vh]"
+        className="w-full max-w-sm md:max-w-2xl p-5 rounded-3xl text-center relative z-20 flex flex-col justify-between items-center min-h-[80vh]"
       >
         <div>
           <div className="text-center mb-4">
@@ -64,8 +64,8 @@ export const FlipCards = ({ isActive }) => {
           </p>
         </div>
 
-        {/* 2x3 Flip Card Grid */}
-        <div className="grid grid-cols-2 gap-4 w-full max-w-sm my-1 justify-items-center">
+        {/* 2x3 Grid on Mobile, 3x2 Grid on Desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-sm md:max-w-xl my-1 justify-items-center">
           {flipMessages.map((message, index) => (
             <div
               key={index}

@@ -11,10 +11,14 @@ export const WelcomeScreen = () => {
   const [noBtnPos, setNoBtnPos] = useState({ x: 0, y: 0 });
   const [noCount, setNoCount] = useState(0);
   const [swapped, setSwapped] = useState(false);
+
   const cardRef = useRef(null);
+  const yesBtnRef = useRef(null);
+  const noBtnRef = useRef(null);
+  const initialPosRef = useRef(null);
 
   const escapeNoButton = () => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || !noBtnRef.current || !yesBtnRef.current) return;
 
     // Increment escape counter
     const nextCount = noCount + 1;
@@ -26,19 +30,56 @@ export const WelcomeScreen = () => {
     }
 
     const cardRect = cardRef.current.getBoundingClientRect();
-    const btnWidth = 100;
-    const btnHeight = 48;
+    const btnRect = noBtnRef.current.getBoundingClientRect();
+    const yesRect = yesBtnRef.current.getBoundingClientRect();
 
-    // Bounds within the card to prevent jumping off-screen
-    const maxX = cardRect.width / 2 - btnWidth;
-    const minX = -cardRect.width / 2 + btnWidth;
-    const maxY = cardRect.height / 2 - btnHeight;
-    const minY = -cardRect.height / 2 + btnHeight;
+    const btnWidth = btnRect.width;
+    const btnHeight = btnRect.height;
+    const yesWidth = yesRect.width;
+    const yesHeight = yesRect.height;
 
-    const randomX = Math.random() * (maxX - minX) + minX;
-    const randomY = Math.random() * (maxY - minY) + minY;
+    // Safe bounds inside the card (padding is 32px, i.e., 2rem)
+    const padding = 32;
+    const minX = padding;
+    const maxX = cardRect.width - btnWidth - padding;
+    
+    // Keep the button in the bottom half of the card (avoiding top text)
+    const minY = cardRect.height * 0.60;
+    const maxY = cardRect.height - btnHeight - padding;
 
-    setNoBtnPos({ x: randomX, y: randomY });
+    let targetX, targetY;
+    let attempts = 0;
+
+    // Try to find a position that does not overlap the YES button
+    do {
+      targetX = Math.random() * (maxX - minX) + minX;
+      targetY = Math.random() * (maxY - minY) + minY;
+      attempts++;
+      
+      const yesXInCard = yesRect.left - cardRect.left;
+      const yesYInCard = yesRect.top - cardRect.top;
+
+      // Check rect overlap with YES button (with 24px safety buffer)
+      const overlapsYes = !(
+        targetX + btnWidth + 24 < yesXInCard ||
+        targetX > yesXInCard + yesWidth + 24 ||
+        targetY + btnHeight + 12 < yesYInCard ||
+        targetY > yesYInCard + yesHeight + 12
+      );
+
+      if (!overlapsYes || attempts > 30) break;
+    } while (true);
+
+    const currentXInCard = btnRect.left - cardRect.left;
+    const currentYInCard = btnRect.top - cardRect.top;
+    const naturalXInCard = currentXInCard - noBtnPos.x;
+    const naturalYInCard = currentYInCard - noBtnPos.y;
+
+    // Set translation displacement relative to initial position
+    setNoBtnPos({
+      x: targetX - naturalXInCard,
+      y: targetY - naturalYInCard
+    });
   };
 
   const handleYes = () => {
@@ -47,7 +88,7 @@ export const WelcomeScreen = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-linear-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
       {/* Background Stickers floating up */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-[10%] left-[8%] w-16 h-16 bg-white/20 rounded-full blur-md" />
@@ -126,6 +167,7 @@ export const WelcomeScreen = () => {
         <div className={`relative flex items-center justify-center gap-6 mt-4 ${swapped ? 'flex-row-reverse' : 'flex-row'}`}>
           {/* YES BUTTON */}
           <motion.button
+            ref={yesBtnRef}
             onClick={handleYes}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
@@ -136,6 +178,7 @@ export const WelcomeScreen = () => {
 
           {/* NO BUTTON */}
           <motion.button
+            ref={noBtnRef}
             onClick={escapeNoButton}
             animate={{
               x: noBtnPos.x,

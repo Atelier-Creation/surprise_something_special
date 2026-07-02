@@ -16,7 +16,7 @@ import CameraScene from './components/CameraScene';
 import CandleScene from './components/CandleScene';
 import CaptionScene from './components/CaptionScene';
 import BirthdayLetter from './components/BirthdayLetter';
-import GalleryScene from './components/GalleryScene';
+import GiftPrankScene from './components/GiftPrankScene';
 import FlipCards from './components/FlipCards';
 import FinalScene from './components/FinalScene';
 
@@ -27,7 +27,7 @@ const AppContent = () => {
   const { currentSlide, setSwiperRef } = useBirthday();
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-50 select-none">
+    <div className="relative w-screen h-screen overflow-hidden bg-blue-150 select-none">
       {/* Global Background Music Wave Indicator */}
       <BackgroundMusic />
 
@@ -69,7 +69,7 @@ const AppContent = () => {
         </SwiperSlide>
 
         <SwiperSlide className="w-full h-full">
-          <GalleryScene isActive={currentSlide === 7} />
+          <GiftPrankScene isActive={currentSlide === 7} />
         </SwiperSlide>
 
         <SwiperSlide className="w-full h-full">

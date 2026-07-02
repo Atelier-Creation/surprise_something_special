@@ -1,52 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useBirthday } from '../context/BirthdayContext';
 import { motion } from 'framer-motion';
 import FloatingStickers from './common/FloatingStickers';
+import flowerImg from '../assets/flower_4.png';
 
 export const BirthdayLetter = ({ isActive }) => {
-  const { birthdayMessage, nextSlide } = useBirthday();
-  const [displayedText, setDisplayedText] = useState('');
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const { birthdayMessage, recipientName, senderName, nextSlide } = useBirthday();
   const scrollRef = useRef(null);
-
-  useEffect(() => {
-    if (!isActive) {
-      setDisplayedText('');
-      setIsTypingComplete(false);
-      return;
-    }
-
-    let currentIndex = 0;
-    const intervalTime = 25; // 25ms per character (nice readable speed)
-    setDisplayedText('');
-    setIsTypingComplete(false);
-
-    const timer = setInterval(() => {
-      if (currentIndex >= birthdayMessage.length) {
-        clearInterval(timer);
-        setIsTypingComplete(true);
-        return;
-      }
-      
-      const nextChar = birthdayMessage[currentIndex];
-      setDisplayedText((prev) => prev + nextChar);
-      currentIndex++;
-
-      // Auto-scroll to bottom of letter box during typing
-      if (scrollRef.current) {
-        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-      }
-    }, intervalTime);
-
-    return () => clearInterval(timer);
-  }, [isActive, birthdayMessage]);
-
-  const handleSkipTyping = () => {
-    if (!isTypingComplete) {
-      setDisplayedText(birthdayMessage);
-      setIsTypingComplete(true);
-    }
-  };
 
   const handleNext = () => {
     nextSlide();
@@ -60,46 +20,65 @@ export const BirthdayLetter = ({ isActive }) => {
         initial={{ opacity: 0, scale: 0.9, y: 30 }}
         animate={isActive ? { opacity: 1, scale: 1, y: 0 } : {}}
         transition={{ duration: 0.8, cubicBezier: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-sm glass-card border border-white/60 p-6 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-between items-center min-h-[530px]"
+        className="w-full max-w-sm bg-[#FCFBF7] border border-slate-200/80 rounded-2xl shadow-xl relative z-20 flex flex-col justify-between items-center min-h-[510px] overflow-hidden"
       >
-        <div className="w-full flex-grow flex flex-col justify-start">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            animate={isActive ? { opacity: 1 } : {}}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-3xl font-handwritten text-purple-600 mt-2 mb-4"
-          >
-            A Little Note for You...
-          </motion.h2>
+        {/* Notebook Margins and Lines */}
+        <div className="absolute top-0 bottom-0 left-8 w-[1px] bg-red-400/50 pointer-events-none z-10" />
 
-          {/* Letter Body: Scrollable box, clicking skips typewriter animation */}
+        <div className="w-full flex-grow flex flex-col justify-start p-6 pl-12 pr-6 relative z-10">
+          {/* Rule Lines Container */}
           <div 
             ref={scrollRef}
-            onClick={handleSkipTyping}
-            className="max-h-[330px] overflow-y-auto px-2 mb-6 scrollbar-thin text-left cursor-pointer select-none"
-            title={!isTypingComplete ? "Tap to show entire message" : ""}
+            className="w-full max-h-[350px] overflow-y-auto scrollbar-thin text-left select-none relative"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px)',
+              backgroundSize: '100% 28px',
+              lineHeight: '28px',
+              paddingTop: '4px'
+            }}
           >
-            <p className="text-purple-950/85 text-sm leading-relaxed whitespace-pre-line font-medium">
-              {displayedText}
-              {!isTypingComplete && (
-                <span className="inline-block w-1.5 h-4 ml-1 bg-pink-500 animate-pulse font-bold">|</span>
-              )}
+            {/* Date header */}
+            <span className="text-[10px] tracking-widest text-slate-400 font-sans block mb-1 leading-none uppercase">
+              JUNE 2026
+            </span>
+
+            {/* Greeting */}
+            <h3 className="text-lg md:text-xl font-bold font-serif text-blue-800 mb-2 leading-relaxed">
+              My dearest {recipientName || "SunShine"},
+            </h3>
+
+            {/* Letter Body - Rendered instantly without typing animation */}
+            <p className="text-slate-700 text-sm md:text-base font-serif leading-[28px] whitespace-pre-line">
+              {birthdayMessage}
             </p>
+
+            {/* Sign-off */}
+            <span className="block text-right font-serif italic text-blue-800 text-base md:text-lg mt-6 leading-relaxed">
+              Forever yours, {senderName || "ME"}
+            </span>
           </div>
         </div>
 
-        {/* Continue Button */}
-        <motion.button
-          onClick={handleNext}
-          initial={{ opacity: 0, y: 15 }}
-          animate={isActive ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-4 py-3 rounded-full text-white font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 transition-all min-h-[48px] w-full max-w-[250px]"
-        >
-          Open My Gifts 🎁
-        </motion.button>
+        {/* Continue Button Area */}
+        <div className="w-full p-6 pl-12 flex justify-center z-20 bg-gradient-to-t from-[#FCFBF7] via-[#FCFBF7]/90 to-transparent">
+          <motion.button
+            onClick={handleNext}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-3 rounded-full text-white font-bold text-base bg-[#600411] hover:bg-[#7d0a1a] shadow-md shadow-[#600411]/20 transition-all min-h-[48px] w-full max-w-[200px] cursor-pointer"
+          >
+            Open My Gifts 🎁
+          </motion.button>
+        </div>
+
+        {/* Overlapping Flower Sticker */}
+        <motion.img
+          src={flowerImg}
+          alt="Flower"
+          animate={{ rotate: [0, 4, -4, 0] }}
+          transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+          className="absolute -bottom-4 -right-4 w-24 h-24 md:w-28 md:h-28 object-contain z-30 pointer-events-none drop-shadow-md"
+        />
       </motion.div>
     </div>
   );

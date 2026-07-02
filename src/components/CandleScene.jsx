@@ -10,9 +10,9 @@ export const CandleScene = ({ isActive }) => {
   const { isCandleBlown, blowCandle, nextSlide } = useBirthday();
   const { isSupported, hasPermission, isBlowing, volume, requestPermission, stopMic } = useMicrophone();
 
-  const [useTapMode, setUseTapMode] = useState(false);
+  const [useTapMode, setUseTapMode] = useState(true);
   const [isLit, setIsLit] = useState(!isCandleBlown);
-  const [showPermissionPrompt, setShowPermissionPrompt] = useState(true);
+  const [showPermissionPrompt, setShowPermissionPrompt] = useState(false);
 
   // Sync state if candle has been blown previously
   useEffect(() => {
@@ -245,8 +245,8 @@ export const CandleScene = ({ isActive }) => {
             )}
 
             {!showPermissionPrompt && useTapMode && (
-              <p className="text-purple-700/80 text-xs font-bold animate-pulse flex items-center gap-1">
-                <FaHandPointer className="inline text-purple-600" /> Tap the candle to blow it out!
+              <p className="text-[#600411]/90 text-xs md:text-sm font-bold animate-pulse flex items-center gap-1 select-none">
+                👆 Tap the candle to blow it out!
               </p>
             )}
           </>
