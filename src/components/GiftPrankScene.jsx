@@ -87,7 +87,7 @@ export const GiftPrankScene = ({ isActive }) => {
               initial={{ scale: 0.7, y: 40, opacity: 0 }}
               animate={{ scale: 1.0, y: 0, opacity: 1 }}
               transition={{ type: 'spring', damping: 12, stiffness: 90 }}
-              className="w-60 h-60 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]"
+              className="w-80 h-80 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]"
             />
           )}
         </AnimatePresence>
