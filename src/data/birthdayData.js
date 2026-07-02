@@ -1,6 +1,6 @@
 export const birthdayData = {
   recipientName: "SunShine",
-  senderName: "ME",
+  senderName: "Anbudan mee",
   birthdayMessage: `Happy Birthday! 🎂\n\nSome people make the world brighter just by being in it, and you are definitely one of them. I am so incredibly grateful for your warmth, your laughter, and all the beautiful memories we've shared. \n\nToday is a celebration of you—your kind heart, your wonderful spirit, and the joy you bring to everyone around you. May this next chapter of your life be filled with endless laughter, exciting adventures, and all the love you so richly deserve.`,
   flipMessages: [
     "Your smile has the power to light up the darkest of days. Never forget how special you are! 😊✨",
