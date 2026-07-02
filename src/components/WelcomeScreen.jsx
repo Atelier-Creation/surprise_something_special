@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useBirthday } from '../context/BirthdayContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sparkles from './common/Sparkles';
+import balloonsImg from '../assets/balloons_1.png';
+import cameraImg from '../assets/camera_1.png';
+import presentImg from '../assets/present.png';
 
 export const WelcomeScreen = () => {
   const { nextSlide, startMusicOnInteraction } = useBirthday();
@@ -50,6 +53,52 @@ export const WelcomeScreen = () => {
         <div className="absolute top-[10%] left-[8%] w-16 h-16 bg-white/20 rounded-full blur-md" />
         <div className="absolute bottom-[15%] right-[8%] w-24 h-24 bg-white/30 rounded-full blur-lg" />
       </div>
+
+      {/* Floating Animated Stickers */}
+      <motion.img
+        src={balloonsImg}
+        alt="Balloons"
+        animate={{
+          y: [0, -15, 0],
+          rotate: [0, 3, -3, 0]
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-12 right-6 w-24 h-24 md:w-32 md:h-32 object-contain z-10 drop-shadow-md pointer-events-none"
+      />
+
+      <motion.img
+        src={presentImg}
+        alt="Present"
+        animate={{
+          y: [0, 12, 0],
+          rotate: [0, -4, 4, 0]
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute bottom-14 left-6 w-20 h-20 md:w-28 md:h-28 object-contain z-10 drop-shadow-md pointer-events-none"
+      />
+
+      <motion.img
+        src={cameraImg}
+        alt="Camera"
+        animate={{
+          y: [0, -10, 0],
+          rotate: [0, 5, -5, 0]
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute bottom-36 right-8 w-16 h-16 md:w-22 md:h-22 object-contain z-10 drop-shadow-md opacity-80 pointer-events-none"
+      />
 
       <motion.div
         ref={cardRef}

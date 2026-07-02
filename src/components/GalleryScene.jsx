@@ -94,7 +94,7 @@ export const GalleryScene = ({ isActive }) => {
 
       {/* Floating Continue Button */}
       {isActive && (
-        <div className="absolute bottom-15 left-1/2 transform -translate-x-1/2 z-30">
+        <div className="absolute bottom-22 left-1/2 transform -translate-x-1/2 z-30">
           <motion.button
             onClick={nextSlide}
             initial={{ opacity: 0, y: 15 }}

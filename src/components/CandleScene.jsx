@@ -287,7 +287,7 @@ export const CandleScene = ({ isActive }) => {
       </div>
 
       {/* Continue Button */}
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
+      <div className="absolute bottom-22 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
         <AnimatePresence>
           {isCandleBlown && (
             <motion.button
