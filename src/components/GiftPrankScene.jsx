@@ -35,7 +35,7 @@ export const GiftPrankScene = ({ isActive }) => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-between h-full w-full px-6 py-10 bg-white text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-between h-full max-h-[80vh] w-full px-6 py-10 bg-white text-purple-950 overflow-hidden select-none">
       <FloatingStickers count={12} active={isActive} />
 
       {/* Header Section */}
