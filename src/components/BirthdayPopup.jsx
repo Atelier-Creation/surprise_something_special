@@ -139,7 +139,7 @@ export const BirthdayPopup = ({ isActive }) => {
           animate={{ scale: 1, rotate: -4 }}
           src={haritha2}
           alt="Haritha 1"
-          className="absolute left-4 md:left-26 top-[22%] w-36 h-36 md:w-52 md:h-52 z-20 object-contain animate-float-slow"
+          className="absolute left-4 md:left-26 top-[18%] w-36 h-36 md:w-52 md:h-52 z-20 object-contain animate-float-slow"
         />
       ) : (
         <PartyHatSVG
