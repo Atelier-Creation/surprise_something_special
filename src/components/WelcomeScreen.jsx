@@ -157,7 +157,7 @@ export const WelcomeScreen = () => {
         </motion.span>
 
         <div>
-          <h1 className="text-6xl capitalize font-bold font-sans mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 leading-tight">
+          <h1 className="text-6xl capitalize font-bold font-sans mb-8 text-[#d02120] leading-tight">
             Are you ready for your <br /> birthday surprise?
           </h1>
 
@@ -202,7 +202,7 @@ export const WelcomeScreen = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="text-xs text-purple-700/80 font-bold mt-6 absolute bottom-4 left-0 right-0 text-center"
+              className="text-xs text-purple-700/80 font-bold mt-10 absolute bottom-4 left-0 right-0 text-center"
             >
               {noCount < 3 && "You can't click NO! 😝"}
               {noCount >= 3 && noCount < 5 && "Positions swapped! Sneaky! 😉"}

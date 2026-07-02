@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import FloatingStickers from './common/FloatingStickers';
 import Sparkles from './common/Sparkles';
 import { FaSyncAlt, FaShareAlt } from 'react-icons/fa';
+import poituvangaTata from "../assets/poituvanga_tata.png"
 
 export const FinalScene = ({ isActive }) => {
   const { senderName, recipientName, resetAll } = useBirthday();
@@ -119,6 +120,8 @@ export const FinalScene = ({ isActive }) => {
           >
             <FaShareAlt /> Share Surprise
           </motion.button> */}
+
+          <img src={poituvangaTata} className='w-full h-60'/>
 
           <motion.button
             onClick={resetAll}
