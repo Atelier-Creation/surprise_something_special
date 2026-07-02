@@ -2,6 +2,12 @@
 
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Fraunces", sans-serif;
+  --font-serif: "Fraunces", serif;
+  --font-handwritten: "Fraunces", "Caveat", cursive;
+}
+
 @layer utilities {
 
   /* 3D Transform Utilities */

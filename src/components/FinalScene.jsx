@@ -74,6 +74,10 @@ export const FinalScene = ({ isActive }) => {
           ❤️
         </motion.div>
 
+        <motion.div initial={{ opacity: 0, scale: 0.9 }}
+        animate={isActive ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 0.6 }}>
+
         <motion.h2
           initial={{ opacity: 0 }}
           animate={isActive ? { opacity: 1 } : {}}
@@ -91,6 +95,7 @@ export const FinalScene = ({ isActive }) => {
         >
           Best Wishes From
         </motion.h1>
+        </motion.div>
 
         <motion.h3
           initial={{ opacity: 0, scale: 0.8 }}
