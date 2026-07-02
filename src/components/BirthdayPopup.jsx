@@ -150,7 +150,7 @@ export const BirthdayPopup = ({ isActive }) => {
         className="absolute left-2 md:left-16 top-[48%] w-20 h-20 md:w-28 md:h-28 z-20 animate-float-fast"
       />
       <BalloonsSVG
-        className="absolute left-8 md:left-24 bottom-12 w-18 h-22 md:w-26 md:h-32 z-20 animate-float-fast"
+        className="absolute left-8 md:left-24 bottom-26 w-18 h-22 md:w-26 md:h-32 z-20 animate-float-fast"
       />
 
 
@@ -167,7 +167,7 @@ export const BirthdayPopup = ({ isActive }) => {
           animate={{ scale: 1, rotate: 4 }}
           src={haritha1}
           alt="Haritha 2"
-          className="absolute right-8 md:right-32 bottom-12 w-40 h-40 md:w-52 md:h-52 z-20 object-contain animate-float-fast"
+          className="absolute right-8 md:right-32 bottom-26 w-40 h-40 md:w-52 md:h-52 z-20 object-contain animate-float-fast"
         />
       ) : (
         <GiftBoxesSVG
