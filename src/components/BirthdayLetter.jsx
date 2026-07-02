@@ -81,7 +81,7 @@ export const BirthdayLetter = ({ isActive }) => {
             onClick={handleNext}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3.5 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-[#d02120]/20 transition-all min-h-[48px] w-full max-w-[200px] md:max-w-[260px] cursor-pointer"
+            className="px-8 py-3.5 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-[#d02120]/20 transition-all min-h-[48px] w-full max-w-[250px] md:max-w-[260px] cursor-pointer"
           >
             Open Your Gifts 🎁
           </motion.button>
