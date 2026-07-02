@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useBirthday } from '../context/BirthdayContext';
 import { motion } from 'framer-motion';
 import FloatingStickers from './common/FloatingStickers';
+import Sparkles from './common/Sparkles';
 
 export const CaptionScene = ({ isActive }) => {
   const { nextSlide } = useBirthday();
@@ -25,8 +26,9 @@ export const CaptionScene = ({ isActive }) => {
         className="absolute inset-0 z-0 pointer-events-none"
         style={{ background: 'radial-gradient(circle at center, rgba(244, 63, 94, 0.25) 0%, rgba(168, 85, 247, 0.15) 55%, transparent 75%)' }}
       />
+      <Sparkles count={20} active={isActive} />
 
-      <FloatingStickers count={10} active={isActive} />
+      {/* <FloatingStickers count={10} active={isActive} /> */}
 
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">

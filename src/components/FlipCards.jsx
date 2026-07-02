@@ -3,6 +3,7 @@ import { useBirthday } from '../context/BirthdayContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import FloatingStickers from './common/FloatingStickers';
 import confetti from 'canvas-confetti';
+import Sparkles from './common/Sparkles';
 
 export const FlipCards = ({ isActive }) => {
   const { flipMessages, flippedCards, toggleFlipCard, nextSlide, playSFX } = useBirthday();
@@ -39,7 +40,8 @@ export const FlipCards = ({ isActive }) => {
 
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full px-4 bg-white text-purple-950 overflow-hidden select-none">
-      <FloatingStickers count={12} active={isActive} />
+      {/* <FloatingStickers count={12} active={isActive} /> */}
+      <Sparkles count={15} active={isActive} />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -49,15 +51,15 @@ export const FlipCards = ({ isActive }) => {
       >
         <div>
           <div className="text-center mb-4">
-            <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-blue-500 block mb-1">
+            <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-[#d02120] block mb-1">
               WISHES FOR YOU
             </span>
-            <h2 className="text-3xl font-bold text-purple-950 font-serif leading-tight">
+            <h2 className="text-3xl font-bold text-[#bf1f1e] font-serif leading-tight">
               Everything I hope you get
             </h2>
             <div className="w-12 h-1 bg-blue-500 mx-auto mt-2 rounded-full shadow-sm" />
           </div>
-          <p className="text-purple-950/70 text-xs font-semibold mb-3">
+          <p className="text-gray-950/70 text-xs font-semibold mb-3">
             {openedCount < 6 
               ? `Open at least 3 gifts to continue (${openedCount}/6 opened)` 
               : "You've opened all your gifts! 🎉"}
@@ -92,7 +94,7 @@ export const FlipCards = ({ isActive }) => {
 
                 {/* Back Side (Message) */}
                 <div className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 text-purple-950 p-3 border border-purple-100 shadow-md flex items-center justify-center rotate-y-180 backface-hidden z-20 overflow-y-auto scrollbar-none">
-                  <p className="text-[10px] md:text-xs leading-normal font-bold text-center text-purple-950 select-text overflow-wrap-break-word">
+                  <p className="text-[10px] md:text-xs leading-normal font-bold text-center text-[#d02120] select-text overflow-wrap-break-word">
                     {message}
                   </p>
                 </div>

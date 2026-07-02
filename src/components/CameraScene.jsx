@@ -81,7 +81,7 @@ export const CameraScene = ({ isActive }) => {
 
   return (
     <div className="relative flex flex-col items-center justify-start h-full w-full px-4 pt-6 bg-white text-purple-950 overflow-hidden select-none">
-      <FloatingStickers count={12} active={isActive} />
+      {/* <FloatingStickers count={12} active={isActive} /> */}
 
       {/* Camera Shutter Flash overlay */}
       <AnimatePresence>
@@ -103,10 +103,10 @@ export const CameraScene = ({ isActive }) => {
         transition={{ duration: 0.6 }}
         className="text-center mb-2 z-20"
       >
-        <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-blue-500 block mb-0.5">
+        <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-[#d02120] block mb-0.5">
           Captured Moments
         </span>
-        <h2 className="text-2xl md:text-3xl font-bold text-purple-950 font-serif">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#bf1f1e] font-serif">
           Press for a memory
         </h2>
         <div className="w-10 h-0.5 bg-blue-500 mx-auto mt-1 rounded-full shadow-sm" />

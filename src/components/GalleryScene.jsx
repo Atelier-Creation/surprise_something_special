@@ -43,7 +43,7 @@ export const GalleryScene = ({ isActive }) => {
 
   return (
     <div className="relative flex flex-col items-center justify-start h-full w-full px-4 pt-12 bg-white text-purple-950 overflow-hidden select-none">
-      <FloatingStickers count={12} active={isActive} />
+      {/* <FloatingStickers count={12} active={isActive} /> */}
 
       {/* Header Section */}
       <motion.div

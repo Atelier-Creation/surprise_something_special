@@ -119,6 +119,70 @@ body {
   animation: flicker 0.5s infinite ease-in-out alternate;
 }
 
+/* Floating Animations in Place (Bobbing) */
+@keyframes float-in-place-slow {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+@keyframes float-in-place-medium {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+@keyframes float-in-place-fast {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -6px;
+  }
+}
+
+.animate-float-slow {
+  animation: float-in-place-slow 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-in-place-medium 4.5s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-in-place-fast 3s ease-in-out infinite;
+}
+
+/* Rising Floating Animations (used by FloatingStickers and FloatingBalloons) */
+@keyframes float-slow {
+  0% {
+    translate: 0 0;
+  }
+  100% {
+    translate: 0 -120vh;
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(15px) rotate(8deg);
+  }
+}
+
+.animate-sway {
+  animation: sway 4s ease-in-out infinite;
+}
+
+
 /* Custom Button styling override to #600411 */
 button.bg-gradient-to-r {
   background-image: none !important;

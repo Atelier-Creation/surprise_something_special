@@ -6,6 +6,7 @@ import closedGift from '../assets/closed_gift.png';
 import openedGift from '../assets/opened_gift.png';
 import { Howl } from 'howler';
 import confetti from 'canvas-confetti';
+import Sparkles from './common/Sparkles';
 
 export const GiftPrankScene = ({ isActive }) => {
   const { nextSlide } = useBirthday();
@@ -36,19 +37,20 @@ export const GiftPrankScene = ({ isActive }) => {
 
   return (
     <div className="relative flex flex-col items-center justify-between h-full max-h-[85vh] md:max-h-full w-full px-6 py-10 bg-white text-purple-950 overflow-hidden select-none">
-      <FloatingStickers count={12} active={isActive} />
+      {/* <FloatingStickers count={12} active={isActive} /> */}
+      <Sparkles count={15} active={isActive} />
 
       {/* Header Section */}
       <div className="text-center z-20 mt-4">
-        <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-blue-500 block mb-1">
+        <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-[#d02120] block mb-1">
           A Special Surprise
         </span>
-        <h2 className="text-3xl font-bold text-purple-950 font-serif leading-tight">
+        <h2 className="text-3xl font-bold text-[#bf1f1e] font-serif leading-tight">
           Here is your gift
         </h2>
-        <div className="w-12 h-1 bg-blue-500 mx-auto mt-2 rounded-full shadow-sm" />
+        <div className="w-12 h-1 bg-[#d02120] mx-auto mt-2 rounded-full shadow-sm" />
 
-        <p className="text-purple-950/70 text-xs font-semibold mt-4">
+        <p className="text-gray-950/70 text-xs font-semibold mt-4">
           {!isOpened ? "Tap to open" : "Surprise! 📣✨"}
         </p>
       </div>
@@ -92,7 +94,7 @@ export const GiftPrankScene = ({ isActive }) => {
         </AnimatePresence>
       </div>
       {isOpened && (
-        <motion.h3>You need this more </motion.h3>
+        <motion.h3 className='text-red-950/70'>You need this more </motion.h3>
       )}
 
       {/* Continue Button Area */}

@@ -55,7 +55,7 @@ export const FinalScene = ({ isActive }) => {
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-white text-purple-950 overflow-hidden select-none">
       <Sparkles count={15} active={isActive} />
-      <FloatingStickers count={12} active={isActive} />
+      {/* <FloatingStickers count={12} active={isActive} /> */}
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -92,7 +92,7 @@ export const FinalScene = ({ isActive }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-2xl font-bold font-sans tracking-wide text-purple-900 mb-2"
+          className="text-2xl font-bold font-sans tracking-wide text-[#600411] mb-2"
         >
           Best Wishes From
         </motion.h1>
@@ -102,7 +102,7 @@ export const FinalScene = ({ isActive }) => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isActive ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.8, duration: 0.6, type: 'spring', damping: 10 }}
-          className="text-4xl font-extrabold font-sans text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-500 to-indigo-600 tracking-wider mb-8 filter drop-shadow-sm"
+          className="text-3xl font-extrabold text-[#bf1f1e] tracking-wider font-aurora my-8 filter drop-shadow-sm"
         >
           {senderName}
         </motion.h3>
@@ -130,7 +130,7 @@ export const FinalScene = ({ isActive }) => {
             transition={{ delay: 1.2, duration: 0.5 }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-full text-purple-800 border border-purple-200 bg-white/40 hover:bg-white/60 transition-all min-h-[48px] shadow-sm font-semibold"
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-full text-[#d02120] border border-[#d02120] bg-white/40 hover:bg-white/60 transition-all min-h-[48px] shadow-sm font-semibold"
           >
             <FaSyncAlt /> Replay Story
           </motion.button>

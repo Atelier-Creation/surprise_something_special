@@ -3,6 +3,7 @@ import { useBirthday } from '../context/BirthdayContext';
 import { motion } from 'framer-motion';
 import FloatingStickers from './common/FloatingStickers';
 import flowerImg from '../assets/flower_4.png';
+import Sparkles from './common/Sparkles';
 
 export const BirthdayLetter = ({ isActive }) => {
   const { birthdayMessage, recipientName, senderName, nextSlide } = useBirthday();
@@ -67,7 +68,8 @@ export const BirthdayLetter = ({ isActive }) => {
 
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-white text-purple-950 overflow-hidden select-none">
-      <FloatingStickers count={12} active={isActive} />
+      {/* <FloatingStickers count={12} active={isActive} /> */}
+      <Sparkles count={15} active={isActive} />
 
       <div className="flex flex-col items-center gap-6 w-full max-w-7xl z-20">
         <motion.div

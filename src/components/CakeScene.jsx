@@ -37,7 +37,7 @@ export const CakeScene = ({ isActive }) => {
   // Cake bottom Y = 170. Height = 70.
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-white text-purple-950 overflow-hidden select-none">
-      <FloatingStickers count={12} active={isActive} />
+      {/* <FloatingStickers count={12} active={isActive} /> */}
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -46,10 +46,10 @@ export const CakeScene = ({ isActive }) => {
         className="w-full max-w-sm md:max-w-3xl p-6 rounded-3xl text-center relative z-20 flex flex-col justify-between items-center min-h-[80vh]"
       >
         <div>
-          <h2 className="text-2xl md:text-4xl font-bold font-sans text-purple-600 mb-1">
+          <h2 className="text-2xl md:text-4xl font-bold font-sans text-[#d02120] mb-1">
             {isCakeCut ? "Mmm, looks delicious! 😋" : "Make a Cut!"}
           </h2>
-          <p className="text-purple-950/60 text-xs md:text-sm px-4 mb-4 font-semibold">
+          <p className="text-gray-700 text-xs md:text-sm px-4 mb-4 font-semibold">
             {isCakeCut 
               ? "A sweet treat to share on your special day!" 
               : "Tap the cake to cut your first birthday slice."}
@@ -216,12 +216,12 @@ export const CakeScene = ({ isActive }) => {
               >
                 <div className="text-center">
                   <span className="text-xl md:text-3xl">❤️</span>
-                  <p className="text-xs md:text-sm font-bold text-purple-700">One piece for you</p>
+                  <p className="text-xs md:text-sm font-bold text-[#d02120]">One piece for you</p>
                 </div>
                 <div className="h-6 w-[1.5px] bg-purple-200" />
                 <div className="text-center">
                   <span className="text-xl md:text-3xl">😊</span>
-                  <p className="text-xs md:text-sm font-bold text-purple-700">One piece for me</p>
+                  <p className="text-xs md:text-sm font-bold text-[#d02120]">One piece for me</p>
                 </div>
               </motion.div>
             )}

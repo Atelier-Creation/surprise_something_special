@@ -83,7 +83,7 @@ export const CandleScene = ({ isActive }) => {
 
   return (
     <div className="relative flex flex-col items-center justify-start h-full w-full px-6 pt-12 bg-white text-purple-950 overflow-hidden select-none">
-      <FloatingStickers count={12} active={isActive} />
+      {/* <FloatingStickers count={12} active={isActive} /> */}
 
       {/* Header Section */}
       <motion.div
@@ -92,13 +92,13 @@ export const CandleScene = ({ isActive }) => {
         transition={{ duration: 0.6 }}
         className="text-center mb-4 z-20"
       >
-        <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-blue-500 block mb-1">
+        <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-[#bf1f1e] block mb-1">
           A Birthday Ritual
         </span>
-        <h2 className="text-3xl font-bold text-purple-950 font-serif">
+        <h2 className="text-3xl font-bold text-[#d02120] font-serif">
           Make a wish
         </h2>
-        <div className="w-12 h-1 bg-blue-500 mx-auto mt-2 rounded-full shadow-sm" />
+        <div className="w-12 h-1 bg-[#bf1f1e] mx-auto mt-2 rounded-full shadow-sm" />
       </motion.div>
 
       {/* Subtext description matching mockup */}
@@ -106,7 +106,7 @@ export const CandleScene = ({ isActive }) => {
         initial={{ opacity: 0 }}
         animate={isActive ? { opacity: 0.75 } : {}}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-xs md:text-sm font-serif italic text-purple-900 text-center max-w-xs mb-8 z-20 leading-relaxed px-4"
+        className="text-xs md:text-sm font-serif italic text-gray-700 text-center max-w-xs mb-8 z-20 leading-relaxed px-4"
       >
         Close your eyes · think of something beautiful · then blow out the candle
       </motion.p>
