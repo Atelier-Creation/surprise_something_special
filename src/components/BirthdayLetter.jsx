@@ -96,7 +96,7 @@ export const BirthdayLetter = ({ isActive }) => {
           transition={{ delay: 0.8, duration: 0.5 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-3 rounded-full text-white font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 transition-all min-h-[48px] w-full max-w-[200px]"
+          className="px-4 py-3 rounded-full text-white font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 transition-all min-h-[48px] w-full max-w-[250px]"
         >
           Open My Gifts 🎁
         </motion.button>
