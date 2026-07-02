@@ -18,7 +18,7 @@ export const CaptionScene = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-full w-full px-8 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-center h-full w-full px-8 bg-white text-purple-950 overflow-hidden select-none">
       <motion.div
         animate={isActive ? { scale: [1, 1.25], opacity: [0.4, 0.6] } : {}}
         transition={{ duration: 5, ease: "easeOut" }}

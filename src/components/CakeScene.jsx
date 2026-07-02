@@ -36,20 +36,20 @@ export const CakeScene = ({ isActive }) => {
   // Center: X=150. Top face ellipse Y center = 100, rx=100, ry=40.
   // Cake bottom Y = 170. Height = 70.
   return (
-    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-white text-purple-950 overflow-hidden select-none">
       <FloatingStickers count={12} active={isActive} />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={isActive ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-sm p-6 rounded-3xl text-center relative z-20 flex flex-col justify-between items-center min-h-[80vh]"
+        className="w-full max-w-sm md:max-w-3xl p-6 rounded-3xl text-center relative z-20 flex flex-col justify-between items-center min-h-[80vh]"
       >
         <div>
-          <h2 className="text-2xl font-bold font-sans text-purple-600 mb-1">
+          <h2 className="text-2xl md:text-4xl font-bold font-sans text-purple-600 mb-1">
             {isCakeCut ? "Mmm, looks delicious! 😋" : "Make a Cut!"}
           </h2>
-          <p className="text-purple-950/60 text-xs px-4 mb-4 font-semibold">
+          <p className="text-purple-950/60 text-xs md:text-sm px-4 mb-4 font-semibold">
             {isCakeCut 
               ? "A sweet treat to share on your special day!" 
               : "Tap the cake to cut your first birthday slice."}
@@ -59,7 +59,7 @@ export const CakeScene = ({ isActive }) => {
         {/* Cake Container */}
         <div 
           onClick={handleCutCake}
-          className={`relative w-[300px] h-[220px] my-2 cursor-pointer flex items-center justify-center ${isCakeCut ? 'pointer-events-none' : ''}`}
+          className={`relative w-[300px] h-[220px] md:w-[600px] md:h-[400px] my-2 cursor-pointer flex items-center justify-center ${isCakeCut ? 'pointer-events-none' : ''}`}
         >
           {/* Animated Knife */}
           <AnimatePresence>
@@ -69,11 +69,10 @@ export const CakeScene = ({ isActive }) => {
                 animate={{ x: 0, y: -20, rotate: -15, opacity: 1 }}
                 exit={{ y: 80, opacity: 0, transition: { duration: 0.2 } }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
-                className="absolute z-40 text-gray-200 drop-shadow-md"
-                style={{ top: '30px', left: '130px' }}
+                className="absolute z-40 text-gray-200 drop-shadow-md top-[30px] left-[130px] md:top-[60px] md:left-[240px]"
               >
                 {/* Custom SVG Knife */}
-                <svg width="60" height="120" viewBox="0 0 40 100" fill="none">
+                <svg viewBox="0 0 40 100" fill="none" className="w-[60px] h-[120px] md:w-[120px] md:h-[240px]">
                   {/* Blade */}
                   <path d="M15,10 L25,10 C25,10 25,60 20,80 L15,80 Z" fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="2" />
                   <path d="M15,10 L18,10 L18,78 L15,80 Z" fill="#FFFFFF" />
@@ -87,7 +86,7 @@ export const CakeScene = ({ isActive }) => {
           </AnimatePresence>
 
           {/* SVG 3D Cake */}
-          <svg width="280" height="200" viewBox="0 0 300 220" className="overflow-visible">
+          <svg viewBox="0 0 300 220" className="w-[280px] h-[200px] md:w-[560px] md:h-[400px] overflow-visible">
             {/* Shadow under the plate */}
             <ellipse cx="150" cy="185" rx="110" ry="20" fill="rgba(0,0,0,0.3)" />
             {/* The Plate */}
@@ -203,7 +202,7 @@ export const CakeScene = ({ isActive }) => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 rounded-full text-white font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 transition-all min-h-[56px] w-full max-w-[240px] cursor-pointer"
+                className="px-10 py-4 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-pink-500/20 transition-all min-h-[56px] w-full max-w-[240px] cursor-pointer"
               >
                 {isCutting ? "Cutting... 🔪" : "🎂 Take the knife!"}
               </motion.button>
@@ -213,16 +212,16 @@ export const CakeScene = ({ isActive }) => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex items-center gap-8 justify-center animate-fade-in"
+                className="flex items-center gap-8 md:gap-16 justify-center animate-fade-in"
               >
                 <div className="text-center">
-                  <span className="text-xl">❤️</span>
-                  <p className="text-xs font-bold text-purple-700">One piece for you</p>
+                  <span className="text-xl md:text-3xl">❤️</span>
+                  <p className="text-xs md:text-sm font-bold text-purple-700">One piece for you</p>
                 </div>
                 <div className="h-6 w-[1.5px] bg-purple-200" />
                 <div className="text-center">
-                  <span className="text-xl">😊</span>
-                  <p className="text-xs font-bold text-purple-700">One piece for me</p>
+                  <span className="text-xl md:text-3xl">😊</span>
+                  <p className="text-xs md:text-sm font-bold text-purple-700">One piece for me</p>
                 </div>
               </motion.div>
             )}
@@ -240,7 +239,7 @@ export const CakeScene = ({ isActive }) => {
                 exit={{ opacity: 0, y: -10 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 rounded-full text-white font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 hover:scale-105 transition-all min-h-[48px]"
+                className="px-8 py-3 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-pink-500/20 hover:scale-105 transition-all min-h-[48px]"
               >
                 Continue ✨
               </motion.button>

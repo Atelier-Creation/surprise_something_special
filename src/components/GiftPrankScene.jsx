@@ -35,7 +35,7 @@ export const GiftPrankScene = ({ isActive }) => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-between h-full w-full px-6 py-10 bg-gradient-to-tr from-pink-50 via-white to-blue-50 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-between h-full w-full px-6 py-10 bg-white text-purple-950 overflow-hidden select-none">
       <FloatingStickers count={12} active={isActive} />
 
       {/* Header Section */}
@@ -106,7 +106,7 @@ export const GiftPrankScene = ({ isActive }) => {
               exit={{ opacity: 0 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-3 rounded-full text-white font-bold text-base bg-[#600411] hover:bg-[#7d0a1a] shadow-md shadow-[#600411]/20 transition-all min-h-[48px] cursor-pointer"
+              className="px-10 py-3 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-[#d02120]/20 transition-all min-h-[48px] cursor-pointer"
             >
               Continue ✨
             </motion.button>

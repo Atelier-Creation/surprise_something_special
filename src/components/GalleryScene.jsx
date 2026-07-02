@@ -42,7 +42,7 @@ export const GalleryScene = ({ isActive }) => {
   ];
 
   return (
-    <div className="relative flex flex-col items-center justify-start h-full w-full px-4 pt-12 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-start h-full w-full px-4 pt-12 bg-white text-purple-950 overflow-hidden select-none">
       <FloatingStickers count={12} active={isActive} />
 
       {/* Header Section */}
@@ -102,7 +102,7 @@ export const GalleryScene = ({ isActive }) => {
             transition={{ delay: 0.6, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 rounded-full text-white font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 backdrop-blur-md min-h-[48px] flex items-center justify-center whitespace-nowrap"
+            className="px-8 py-3 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-pink-500/20 backdrop-blur-md min-h-[48px] flex items-center justify-center whitespace-nowrap"
           >
             See Gifts 🎁
           </motion.button>

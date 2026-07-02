@@ -38,7 +38,7 @@ export const FlipCards = ({ isActive }) => {
   ];
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-full w-full px-4 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-center h-full w-full px-4 bg-white text-purple-950 overflow-hidden select-none">
       <FloatingStickers count={12} active={isActive} />
 
       <motion.div
@@ -70,7 +70,7 @@ export const FlipCards = ({ isActive }) => {
             <div
               key={index}
               onClick={() => handleCardClick(index)}
-              className="w-full aspect-square max-w-[145px] cursor-pointer perspective-1000"
+              className="w-full aspect-square max-w-[245px] cursor-pointer perspective-1000"
             >
               <div
                 className={`relative w-full h-full duration-700 preserve-3d transition-transform ${
@@ -112,7 +112,7 @@ export const FlipCards = ({ isActive }) => {
                 exit={{ opacity: 0, y: -10 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3.5 rounded-full text-white font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 transition-all min-h-[48px]"
+                className="px-8 py-3.5 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-pink-500/20 transition-all min-h-[48px]"
               >
                 Next Surprise! 🌟
               </motion.button>

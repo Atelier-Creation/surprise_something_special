@@ -17,12 +17,12 @@ const PolaroidCard = ({ photo, angle, onClick }) => (
     animate={{ scale: 1, y: 0, opacity: 1, rotate: parseFloat(angle) }}
     whileHover={{ scale: 1.05, zIndex: 30 }}
     onClick={onClick}
-    className="bg-white p-2 pb-3 rounded shadow-md border border-slate-100 flex flex-col items-center cursor-pointer origin-center transform transition-shadow hover:shadow-lg w-[110px] md:w-[150px]"
+    className="bg-white p-2 pb-3 rounded shadow-md border border-slate-100 flex flex-col items-center cursor-pointer origin-center transform transition-shadow hover:shadow-lg w-[180px] md:w-[200px]"
   >
     <div className="w-full aspect-square overflow-hidden rounded bg-slate-50 mb-1.5 pointer-events-none">
       <img src={photo.src} className="w-full h-full object-cover" alt="" />
     </div>
-    <p className="font-handwritten text-[9px] md:text-[11px] text-[#600411] font-bold text-center leading-none mt-1 select-none pointer-events-none truncate w-full">
+    <p className="font-handwritten text-[9px] md:text-[11px] text-[#d02120] font-bold text-center leading-none mt-1 select-none pointer-events-none truncate w-full">
       {photo.caption}
     </p>
   </motion.div>
@@ -80,7 +80,7 @@ export const CameraScene = ({ isActive }) => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-start h-full w-full px-4 pt-6 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-start h-full w-full px-4 pt-6 bg-white text-purple-950 overflow-hidden select-none">
       <FloatingStickers count={12} active={isActive} />
 
       {/* Camera Shutter Flash overlay */}
@@ -139,8 +139,8 @@ export const CameraScene = ({ isActive }) => {
       </motion.div>
 
       {/* Symmetrical Polaroid Grid Area */}
-      <div className="w-full max-w-sm md:max-w-md flex flex-col items-center gap-3.5 z-20 overflow-y-auto max-h-[calc(100vh-270px)] scrollbar-none pb-20">
-        <div className="grid grid-cols-2 gap-4 w-full justify-items-center">
+      <div className="w-full max-w-lg md:max-w-4xl mt-10 flex flex-col items-center gap-3.5 z-20 overflow-y-auto max-h-[calc(100vh-270px)] scrollbar-none pb-20">
+        <div className="grid grid-cols-4 gap-4 w-full justify-items-center">
           {revealedCount >= 1 && <PolaroidCard photo={memories[0]} angle="-4" onClick={() => setSelectedPhoto(memories[0])} />}
           {revealedCount >= 2 && <PolaroidCard photo={memories[1]} angle="2" onClick={() => setSelectedPhoto(memories[1])} />}
           {revealedCount >= 3 && <PolaroidCard photo={memories[2]} angle="-2" onClick={() => setSelectedPhoto(memories[2])} />}
@@ -184,7 +184,7 @@ export const CameraScene = ({ isActive }) => {
                 />
               </div>
               {/* Caption */}
-              <p className="font-handwritten text-lg md:text-xl text-[#600411] font-bold text-center select-none leading-none">
+              <p className="font-handwritten text-lg md:text-xl text-[#d02120] font-bold text-center select-none leading-none">
                 {selectedPhoto.caption}
               </p>
             </motion.div>
@@ -193,7 +193,7 @@ export const CameraScene = ({ isActive }) => {
       </AnimatePresence>
 
       {/* Navigation button */}
-      <div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
+      <div className="absolute bottom-26 md:bottom-16 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
         <AnimatePresence>
           {revealedCount === 4 && (
             <motion.button
@@ -203,7 +203,7 @@ export const CameraScene = ({ isActive }) => {
               exit={{ opacity: 0 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-full text-white font-bold text-base bg-[#600411] hover:bg-[#7d0a1a] shadow-md shadow-[#600411]/20 min-h-[48px] flex items-center justify-center whitespace-nowrap cursor-pointer"
+              className="px-8 py-3 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-[#d02120]/20 min-h-[48px] flex items-center justify-center whitespace-nowrap cursor-pointer"
             >
               Continue ✨
             </motion.button>

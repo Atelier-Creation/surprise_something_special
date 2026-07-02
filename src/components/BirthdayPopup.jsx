@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useBirthday } from '../context/BirthdayContext';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import Sparkles from './common/Sparkles';
 import bouquet from "../assets/boque.png";
 import crownImg from '../assets/crown.png';
 import haritha1 from '../assets/haritha1.png';
 import haritha2 from '../assets/haritha2.PNG';
+import partyhat from '../assets/partyhat.png';
 
 // Inline SVGs for mockup stickers
 
@@ -71,7 +72,7 @@ export const BirthdayPopup = ({ isActive }) => {
     }
 
     const timer = setTimeout(() => {
-      setNameToDisplay("haritha");
+      setNameToDisplay("harithaa");
       // Celebratory name reveal confetti!
       confetti({
         particleCount: 50,
@@ -129,53 +130,80 @@ export const BirthdayPopup = ({ isActive }) => {
   const remainingName = nameToDisplay.substring(1);
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-gradient-to-tr from-pink-50 via-white to-blue-50 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-white text-purple-950 overflow-hidden select-none">
       <Sparkles count={8} active={isActive} />
 
       {/* Symmetrical Left Side Stickers */}
-      {nameToDisplay === "haritha" ? (
-        <motion.img
-          initial={{ scale: 0, rotate: -45 }}
-          animate={{ scale: 1, rotate: -4 }}
-          src={haritha2}
-          alt="Haritha 1"
-          className="absolute left-4 md:left-26 top-[18%] w-36 h-36 md:w-52 md:h-52 z-20 object-contain animate-float-slow"
-        />
-      ) : (
-        <PartyHatSVG
-          className="absolute left-4 md:left-36 top-[24%] w-16 h-16 md:w-24 md:h-24 z-20 animate-float-slow"
-        />
-      )}
+      <img src={partyhat}
+        className="absolute left-4 md:left-36 top-[18%] w-16 h-16 md:w-24 md:h-24 z-20 animate-float-slow"
+      />
+      
       <GiftBoxesSVG
         className="absolute left-2 md:left-16 top-[48%] w-20 h-20 md:w-28 md:h-28 z-20 animate-float-fast"
       />
-      <BalloonsSVG
-        className="absolute left-8 md:left-24 bottom-26 w-18 h-22 md:w-26 md:h-32 z-20 animate-float-fast"
-      />
-
+      
+      <AnimatePresence mode="wait">
+        {nameToDisplay === "harithaa" ? (
+          <motion.img
+            key="haritha2"
+            initial={{ opacity: 0, scale: 0, rotate: -45 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0, rotate: -45 }}
+            transition={{ type: 'spring', damping: 15, stiffness: 80 }}
+            src={haritha2}
+            alt="Haritha 1"
+            className="absolute left-4 md:-left-15 bottom-0 w-36 h-36 md:w-120 md:h-120 z-20 object-contain animate-float-slow"
+          />
+        ) : (
+          <motion.div
+            key="balloons"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute left-8 md:left-24 bottom-26 w-18 h-22 md:w-26 md:h-32 z-20 animate-float-fast"
+          >
+            <BalloonsSVG className="w-full h-full" />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Symmetrical Right Side Stickers (Flipped) */}
-
+      {nameToDisplay === "harithaa" ? (<></>):( 
       <BalloonsSVG
         className="absolute right-4 md:right-20 top-[48%] w-18 h-22 md:w-26 md:h-32 z-20 animate-float-medium"
         style={{ transform: 'scaleX(-1)' }}
-      />
+      />)}
 
-      {nameToDisplay === "haritha" ? (
-        <motion.img
-          initial={{ scale: 0, rotate: 45 }}
-          animate={{ scale: 1, rotate: 4 }}
-          src={haritha1}
-          alt="Haritha 2"
-          className="absolute right-8 md:right-32 bottom-26 w-40 h-40 md:w-52 md:h-52 z-20 object-contain animate-float-fast"
-        />
-      ) : (
-        <GiftBoxesSVG
-          className="absolute right-8 md:right-32 bottom-12 w-20 h-20 md:w-28 md:h-28 z-20 animate-float-fast"
-          style={{ transform: 'scaleX(-1)' }}
-        />
-      )}
-      <PartyHatSVG
+      <AnimatePresence mode="wait">
+        {nameToDisplay === "harithaa" ? (
+          <motion.img
+            key="haritha1"
+            initial={{ opacity: 0, scale: 0, rotate: 45 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0, rotate: 45 }}
+            transition={{ type: 'spring', damping: 15, stiffness: 80 }}
+            src={haritha1}
+            alt="Haritha 2"
+            style={{ transform: 'scaleX(-1)' }}
+            className="absolute right-8 md:-right-15 bottom-0 w-40 h-40 md:w-120 md:h-120 z-20 object-contain animate-float-fast"
+          />
+        ) : (
+          <motion.div
+            key="giftbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute right-8 md:right-32 bottom-12 w-20 h-20 md:w-28 md:h-28 z-20 animate-float-fast"
+            style={{ transform: 'scaleX(-1)' }}
+          >
+            <GiftBoxesSVG className="w-full h-full" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <img src={partyhat}
         className="absolute right-2 md:right-16 top-[24%] w-16 h-16 md:w-24 md:h-24 z-20 animate-float-slow"
         style={{ transform: 'scaleX(-1)' }}
       />
@@ -193,41 +221,45 @@ export const BirthdayPopup = ({ isActive }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={isActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex items-center justify-center gap-1 md:gap-3 mb-1"
+            className="flex items-center justify-center gap-1 md:gap-3 mb-10"
           >
-            <span className="font-aurora text-2xl md:text-4xl  text-[#600411] italic font-medium leading-none">
+            <span className="font-aurora text-2xl md:text-4xl  text-[#d02120] italic font-medium leading-none">
               Happy
             </span>
-            <img src={bouquet} />
-            <span className="font-aurora text-2xl md:text-4xl text-[#600411] italic font-medium leading-none">
+            <img src={bouquet} className='h-30'/>
+            <span className="font-aurora text-2xl md:text-4xl text-[#d02120] italic font-medium leading-none">
               Birthday
             </span>
           </motion.div>
 
           {/* Name/Sunshine in custom Aurora font with crown */}
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isActive ? { opacity: 1, scale: 1 } : {}}
-            transition={{ type: 'spring', damping: 10, delay: 0.8 }}
-            className="text-4xl md:text-9xl font-aurora  text-[#600411] tracking-normal mb-8 leading-none mt-2 select-none"
-          >
-            <span className="relative capitalize inline-block">
-              {/* Crown Image sitting right on top of the first letter */}
-              <img
-                src={crownImg}
-                alt="Crown"
-                className="absolute -top-6 md:-top-10 left-1/2 transform -translate-x-1/2 w-6 h-6 md:w-11 md:h-11 object-contain pointer-events-none"
-              />
-              {firstLetter}
-            </span>
-            {remainingName}
-          </motion.h1>
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={nameToDisplay}
+              initial={{ opacity: 0, y: 15, scale: 0.95 }}
+              animate={isActive ? { opacity: 1, y: 0, scale: 1 } : {}}
+              exit={{ opacity: 0, y: -15, scale: 0.95 }}
+              transition={{ type: 'spring', damping: 12, stiffness: 80 }}
+              className="text-4xl md:text-9xl font-aurora text-[#d02120] tracking-normal mb-8 leading-none mt-2 select-none"
+            >
+              <span className="relative capitalize inline-block">
+                {/* Crown Image sitting right on top of the first letter */}
+                <img
+                  src={crownImg}
+                  alt="Crown"
+                  className="absolute -top-6 md:-top-28 left-1/2 transform -translate-x-1/2 w-6 h-6 md:w-36 md:h-36 object-contain pointer-events-none"
+                />
+                {firstLetter}
+              </span>
+              {remainingName}
+            </motion.h1>
+          </AnimatePresence>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={isActive ? { opacity: 0.75 } : {}}
             transition={{ duration: 0.8, delay: 1.1 }}
-            className="text-[#600411] text-xs md:text-sm max-w-[280px] mb-12 font-serif italic leading-relaxed"
+            className="text-[#d02120] text-xs md:text-sm max-w-[280px] mb-12 font-serif italic leading-relaxed"
           >
             May your special day be filled with endless smiles, sweet moments, and warm memories! 🌟
           </motion.p>
@@ -240,7 +272,7 @@ export const BirthdayPopup = ({ isActive }) => {
           transition={{ duration: 0.5, delay: 5.3 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-3.5 rounded-full text-white font-bold text-base bg-[#600411] hover:bg-[#7d0a1a] shadow-md shadow-[#600411]/20 z-30 min-w-[200px] min-h-[48px] cursor-pointer"
+          className="px-8 py-3.5 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-[#d02120]/20 z-30 min-w-[200px] min-h-[48px] cursor-pointer"
         >
           Let's Cut the Cake! 🎂
         </motion.button>

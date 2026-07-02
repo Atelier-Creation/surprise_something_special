@@ -52,7 +52,7 @@ export const FinalScene = ({ isActive }) => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-white text-purple-950 overflow-hidden select-none">
       <Sparkles count={15} active={isActive} />
       <FloatingStickers count={12} active={isActive} />
 
@@ -115,7 +115,7 @@ export const FinalScene = ({ isActive }) => {
             transition={{ delay: 1, duration: 0.5 }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 min-h-[48px]"
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white font-bold text-base bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-pink-500/20 min-h-[48px]"
           >
             <FaShareAlt /> Share Surprise
           </motion.button> */}

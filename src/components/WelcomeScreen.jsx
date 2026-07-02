@@ -42,7 +42,7 @@ export const WelcomeScreen = () => {
     const padding = 32;
     const minX = padding;
     const maxX = cardRect.width - btnWidth - padding;
-    
+
     // Keep the button in the bottom half of the card (avoiding top text)
     const minY = cardRect.height * 0.60;
     const maxY = cardRect.height - btnHeight - padding;
@@ -55,7 +55,7 @@ export const WelcomeScreen = () => {
       targetX = Math.random() * (maxX - minX) + minX;
       targetY = Math.random() * (maxY - minY) + minY;
       attempts++;
-      
+
       const yesXInCard = yesRect.left - cardRect.left;
       const yesYInCard = yesRect.top - cardRect.top;
 
@@ -88,7 +88,7 @@ export const WelcomeScreen = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-linear-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
+    <div className="relative flex flex-col items-center justify-center h-full w-full px-6 bg-white text-purple-950 overflow-hidden select-none">
       {/* Background Stickers floating up */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-[10%] left-[8%] w-16 h-16 bg-white/20 rounded-full blur-md" />
@@ -96,7 +96,7 @@ export const WelcomeScreen = () => {
       </div>
 
       {/* Floating Animated Stickers */}
-      <motion.img
+      {/* <motion.img
         src={balloonsImg}
         alt="Balloons"
         animate={{
@@ -124,9 +124,9 @@ export const WelcomeScreen = () => {
           ease: "easeInOut"
         }}
         className="absolute bottom-14 left-6 w-20 h-20 md:w-28 md:h-28 object-contain z-10 drop-shadow-md pointer-events-none"
-      />
+      /> */}
 
-      <motion.img
+      {/* <motion.img
         src={cameraImg}
         alt="Camera"
         animate={{
@@ -139,30 +139,32 @@ export const WelcomeScreen = () => {
           ease: "easeInOut"
         }}
         className="absolute bottom-36 right-8 w-16 h-16 md:w-22 md:h-22 object-contain z-10 drop-shadow-md opacity-80 pointer-events-none"
-      />
+      /> */}
 
       <motion.div
         ref={cardRef}
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, ease: 'easeOut' }}
-        className="w-full max-w-sm p-8 rounded-3xl text-center relative z-20 flex flex-col justify-between min-h-[80vh]"
+        className="w-full max-w-sm md:max-w-4xl p-8 rounded-3xl text-center relative z-20 flex flex-col justify-between min-h-[80vh]"
       >
         <motion.span
           animate={{ rotate: [0, 10, -10, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
           className="text-6xl mb-6 block drop-shadow-sm"
         >
-          🎁
+          <img src={presentImg} className='h-30 w-30 mx-auto' />
         </motion.span>
 
-        <h1 className="text-3xl capitalize font-bold font-sans mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 leading-tight">
-          Are you ready for your birthday surprise?
-        </h1>
+        <div>
+          <h1 className="text-6xl capitalize font-bold font-sans mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 leading-tight">
+            Are you ready for your <br /> birthday surprise?
+          </h1>
 
-        <p className="text-purple-950/60 text-sm mb-8 font-medium">
-          Turn up your volume 🔊 and get ready for a little magic!
-        </p>
+          <p className="text-purple-950/60 text-sm mb-8 font-medium">
+            Turn up your volume 🔊 and get ready for a little magic!
+          </p>
+        </div>
 
         <div className={`relative flex items-center justify-center gap-6 mt-4 ${swapped ? 'flex-row-reverse' : 'flex-row'}`}>
           {/* YES BUTTON */}
@@ -171,7 +173,7 @@ export const WelcomeScreen = () => {
             onClick={handleYes}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 rounded-full text-white font-semibold text-lg bg-gradient-to-r from-pink-500 to-purple-600 shadow-md shadow-pink-500/20 animate-pulse-glow z-30 min-w-[110px] min-h-[48px]"
+            className="px-8 py-3 rounded-full text-white font-semibold text-lg bg-[#d02120] hover:bg-[#bf1f1e] shadow-md shadow-pink-500/20 animate-pulse-glow z-30 min-w-[110px] min-h-[48px]"
           >
             YES!
           </motion.button>
@@ -208,8 +210,8 @@ export const WelcomeScreen = () => {
             </motion.p>
           )}
         </AnimatePresence>
-      </motion.div>
-    </div>
+      </motion.div >
+    </div >
   );
 };
 
