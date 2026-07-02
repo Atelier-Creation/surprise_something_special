@@ -146,9 +146,9 @@ export const CameraScene = ({ isActive }) => {
             <motion.div
               initial={{ scale: 0.5, y: -80, opacity: 0 }}
               animate={{ scale: 1, rotate: 0, x: 0, y: 45, opacity: 1, zIndex: 20 }}
-              className="absolute bg-white p-3 pb-5 rounded-2xl shadow-lg border border-slate-150 w-[140px] flex flex-col items-center"
+              className="absolute bg-white p-3 pb-5 rounded-md shadow-lg border border-slate-150 w-[140px] flex flex-col items-center"
             >
-              <div className="w-full aspect-square overflow-hidden rounded-xl bg-slate-50 mb-2.5">
+              <div className="w-full aspect-square overflow-hidden rounded-sm bg-slate-50 mb-2.5">
                 <img src={memories[2].src} className="w-full h-full object-cover" alt="" />
               </div>
               <p className="font-handwritten text-xs text-purple-700 font-bold whitespace-nowrap">

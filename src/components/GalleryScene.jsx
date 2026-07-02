@@ -75,9 +75,9 @@ export const GalleryScene = ({ isActive }) => {
             onClick={() => setSelectedPhoto(photo)}
             whileHover={{ scale: 1.03, rotate: index % 2 === 0 ? -1 : 1 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-white p-3 pb-5 rounded-2xl shadow-md border border-slate-100 flex flex-col items-center cursor-pointer transition-shadow hover:shadow-lg"
+            className="bg-white p-3 pb-5 rounded-md shadow-md border border-slate-100 flex flex-col items-center cursor-pointer transition-shadow hover:shadow-lg"
           >
-            <div className="w-full aspect-square overflow-hidden rounded-lg bg-slate-50 mb-3">
+            <div className="w-full aspect-square overflow-hidden rounded-sm bg-slate-50 mb-3">
               <img
                 src={photo.src}
                 alt={photo.caption}
