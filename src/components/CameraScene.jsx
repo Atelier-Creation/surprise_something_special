@@ -140,7 +140,7 @@ export const CameraScene = ({ isActive }) => {
 
       {/* Symmetrical Polaroid Grid Area */}
       <div className="w-full max-w-lg md:max-w-4xl mt-10 flex flex-col items-center gap-3.5 z-20 overflow-y-auto max-h-[calc(100vh-270px)] scrollbar-none pb-20">
-        <div className="grid grid-cols-4 gap-4 w-full justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full justify-items-center">
           {revealedCount >= 1 && <PolaroidCard photo={memories[0]} angle="-4" onClick={() => setSelectedPhoto(memories[0])} />}
           {revealedCount >= 2 && <PolaroidCard photo={memories[1]} angle="2" onClick={() => setSelectedPhoto(memories[1])} />}
           {revealedCount >= 3 && <PolaroidCard photo={memories[2]} angle="-2" onClick={() => setSelectedPhoto(memories[2])} />}
