@@ -160,7 +160,7 @@ export const CameraScene = ({ isActive }) => {
       </div>
 
       {/* Navigation button */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
         <AnimatePresence>
           {revealedCount === 3 && (
             <motion.button

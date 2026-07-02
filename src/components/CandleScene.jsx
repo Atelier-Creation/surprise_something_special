@@ -9,7 +9,7 @@ import { FaMicrophone, FaHandPointer } from 'react-icons/fa';
 export const CandleScene = ({ isActive }) => {
   const { isCandleBlown, blowCandle, nextSlide } = useBirthday();
   const { isSupported, hasPermission, isBlowing, volume, requestPermission, stopMic } = useMicrophone();
-  
+
   const [useTapMode, setUseTapMode] = useState(false);
   const [isLit, setIsLit] = useState(!isCandleBlown);
   const [showPermissionPrompt, setShowPermissionPrompt] = useState(true);
@@ -40,7 +40,7 @@ export const CandleScene = ({ isActive }) => {
   const handleExtinguish = () => {
     if (!isLit) return;
     setIsLit(false);
-    
+
     // Complete blowing sequence with confetti
     setTimeout(() => {
       handleBlowingComplete();
@@ -49,13 +49,13 @@ export const CandleScene = ({ isActive }) => {
 
   const handleBlowingComplete = () => {
     if (isCandleBlown) return;
-    
+
     // Trigger blow out in context (sound + cheers)
     blowCandle();
-    
+
     // Stop recording
     stopMic();
-    
+
     // Explode multi-color confetti
     confetti({
       particleCount: 120,
@@ -112,15 +112,14 @@ export const CandleScene = ({ isActive }) => {
       </motion.p>
 
       {/* Main Candle Area */}
-      <div 
+      <div
         onClick={() => {
           if (!showPermissionPrompt && (useTapMode || isCandleBlown)) {
             handleExtinguish();
           }
         }}
-        className={`relative w-[280px] h-[260px] flex items-center justify-center z-20 cursor-pointer ${
-          isCandleBlown ? 'pointer-events-none' : ''
-        }`}
+        className={`relative w-[280px] h-[260px] flex items-center justify-center z-20 cursor-pointer ${isCandleBlown ? 'pointer-events-none' : ''
+          }`}
       >
         <svg width="200" height="260" viewBox="0 0 200 260" className="overflow-visible">
           {/* Shadow Glow under candle */}
@@ -130,12 +129,12 @@ export const CandleScene = ({ isActive }) => {
           )}
 
           {/* Candle Body */}
-          <rect 
-            x="82" 
-            y="110" 
-            width="36" 
-            height="130" 
-            fill="url(#candleGrad)" 
+          <rect
+            x="82"
+            y="110"
+            width="36"
+            height="130"
+            fill="url(#candleGrad)"
             rx="10"
             stroke="#F1F5F9"
             strokeWidth="1"
@@ -237,7 +236,7 @@ export const CandleScene = ({ isActive }) => {
                 </p>
                 {/* Visual Volume Mic Meter */}
                 <div className="w-24 h-1.5 bg-purple-100 rounded-full overflow-hidden mt-1 shadow-inner">
-                  <div 
+                  <div
                     className="h-full bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-75"
                     style={{ width: `${Math.min(100, volume * 180)}%` }}
                   />
@@ -264,7 +263,7 @@ export const CandleScene = ({ isActive }) => {
       <div className="w-full h-[60px] flex items-center justify-center gap-4 z-20">
         <AnimatePresence>
           {isActive && showPermissionPrompt && !isCandleBlown && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -288,7 +287,7 @@ export const CandleScene = ({ isActive }) => {
       </div>
 
       {/* Continue Button */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 h-[48px]">
         <AnimatePresence>
           {isCandleBlown && (
             <motion.button

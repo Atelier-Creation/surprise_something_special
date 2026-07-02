@@ -47,16 +47,16 @@ export const CaptionScene = ({ isActive }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={isActive ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="flex flex-col items-center gap-6"
+          className="relative px-6 py-4"
         >
           {/* Double Quotes Icon */}
-          <span className="text-pink-500/20 text-7xl font-serif leading-none h-6">“</span>
+          <span className="absolute -top-4 -left-2 text-pink-500/20 text-8xl font-serif leading-none select-none">“</span>
           
-          <h1 className="text-2xl md:text-3xl font-medium font-serif leading-relaxed italic text-transparent bg-clip-text bg-gradient-to-br from-pink-600 via-purple-700 to-indigo-800 px-4">
+          <h1 className="text-2xl md:text-3xl font-medium font-serif leading-relaxed italic text-transparent bg-clip-text bg-gradient-to-br from-pink-600 via-purple-700 to-indigo-800 px-4 py-2 relative z-10">
             Some people make life brighter just by being in it.
           </h1>
 
-          <span className="text-pink-500/20 text-7xl font-serif leading-none h-6 self-end">”</span>
+          <span className="absolute -bottom-8 -right-2 text-pink-500/20 text-8xl font-serif leading-none select-none">”</span>
         </motion.div>
       </div>
     </div>

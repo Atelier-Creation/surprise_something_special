@@ -60,7 +60,7 @@ export const BirthdayLetter = ({ isActive }) => {
         initial={{ opacity: 0, scale: 0.9, y: 30 }}
         animate={isActive ? { opacity: 1, scale: 1, y: 0 } : {}}
         transition={{ duration: 0.8, cubicBezier: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-sm glass-card border border-white/60 p-6 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-between items-center min-h-[480px]"
+        className="w-full max-w-sm glass-card border border-white/60 p-6 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-between items-center min-h-[530px]"
       >
         <div className="w-full flex-grow flex flex-col justify-start">
           <motion.h2
@@ -76,7 +76,7 @@ export const BirthdayLetter = ({ isActive }) => {
           <div 
             ref={scrollRef}
             onClick={handleSkipTyping}
-            className="max-h-[280px] overflow-y-auto px-2 mb-6 scrollbar-thin text-left cursor-pointer select-none"
+            className="max-h-[330px] overflow-y-auto px-2 mb-6 scrollbar-thin text-left cursor-pointer select-none"
             title={!isTypingComplete ? "Tap to show entire message" : ""}
           >
             <p className="text-purple-950/85 text-sm leading-relaxed whitespace-pre-line font-medium">
