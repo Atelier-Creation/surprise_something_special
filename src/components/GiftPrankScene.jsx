@@ -47,18 +47,17 @@ export const GiftPrankScene = ({ isActive }) => {
           Here is your gift
         </h2>
         <div className="w-12 h-1 bg-blue-500 mx-auto mt-2 rounded-full shadow-sm" />
-        
+
         <p className="text-purple-950/70 text-xs font-semibold mt-4">
           {!isOpened ? "Tap to open" : "Surprise! 📣✨"}
         </p>
       </div>
 
       {/* Gift Box Container */}
-      <div 
+      <div
         onClick={handleOpenGift}
-        className={`relative z-20 flex items-center justify-center cursor-pointer transition-transform duration-300 ${
-          !isOpened ? 'hover:scale-105 active:scale-95' : ''
-        }`}
+        className={`relative z-20 flex items-center justify-center cursor-pointer transition-transform duration-300 ${!isOpened ? 'hover:scale-105 active:scale-95' : ''
+          }`}
         style={{ height: '340px' }}
       >
         <AnimatePresence mode="wait">
@@ -68,12 +67,12 @@ export const GiftPrankScene = ({ isActive }) => {
               src={closedGift}
               alt="Closed Gift Box"
               initial={{ scale: 0.8 }}
-              animate={{ 
+              animate={{
                 scale: 1.0,
-                rotate: [0, -3, 3, -3, 3, 0] 
+                rotate: [0, -3, 3, -3, 3, 0]
               }}
               exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ 
+              transition={{
                 rotate: { repeat: Infinity, duration: 2.5, ease: "easeInOut" },
                 scale: { duration: 0.3 }
               }}
@@ -92,6 +91,9 @@ export const GiftPrankScene = ({ isActive }) => {
           )}
         </AnimatePresence>
       </div>
+      {isOpened && (
+        <motion.h3>You need this more </motion.h3>
+      )}
 
       {/* Continue Button Area */}
       <div className="h-[64px] flex items-center justify-center z-20 mb-4">
