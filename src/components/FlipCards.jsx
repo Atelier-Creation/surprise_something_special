@@ -28,6 +28,15 @@ export const FlipCards = ({ isActive }) => {
   const openedCount = flippedCards.filter(Boolean).length;
   const isContinueEnabled = openedCount >= 3;
 
+  const cardDetails = [
+    { id: '01', emoji: '⭐' },
+    { id: '02', emoji: '🌸' },
+    { id: '03', emoji: '💖' },
+    { id: '04', emoji: '☕' },
+    { id: '05', emoji: '🐱' },
+    { id: '06', emoji: '✨' },
+  ];
+
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full px-4 bg-gradient-to-tr from-pink-100 via-purple-50 to-blue-100 text-purple-950 overflow-hidden select-none">
       <FloatingStickers count={12} active={isActive} />
@@ -36,12 +45,18 @@ export const FlipCards = ({ isActive }) => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={isActive ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-sm glass-card border border-white/60 p-5 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-between items-center min-h-[490px]"
+        className="w-full max-w-sm p-5 rounded-3xl text-center relative z-20 flex flex-col justify-between items-center min-h-[80vh]"
       >
         <div>
-          <h2 className="text-xl font-bold font-sans text-purple-600 mb-1">
-            Tap Your Gifts! 🎁
-          </h2>
+          <div className="text-center mb-4">
+            <span className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-blue-500 block mb-1">
+              WISHES FOR YOU
+            </span>
+            <h2 className="text-3xl font-bold text-purple-950 font-serif leading-tight">
+              Everything I hope you get
+            </h2>
+            <div className="w-12 h-1 bg-blue-500 mx-auto mt-2 rounded-full shadow-sm" />
+          </div>
           <p className="text-purple-950/70 text-xs font-semibold mb-3">
             {openedCount < 6 
               ? `Open at least 3 gifts to continue (${openedCount}/6 opened)` 
@@ -50,29 +65,34 @@ export const FlipCards = ({ isActive }) => {
         </div>
 
         {/* 2x3 Flip Card Grid */}
-        <div className="grid grid-cols-2 gap-3 w-full my-1 justify-items-center">
+        <div className="grid grid-cols-2 gap-4 w-full max-w-sm my-1 justify-items-center">
           {flipMessages.map((message, index) => (
             <div
               key={index}
               onClick={() => handleCardClick(index)}
-              className="w-[140px] h-[95px] cursor-pointer perspective-1000"
+              className="w-full aspect-square max-w-[145px] cursor-pointer perspective-1000"
             >
               <div
                 className={`relative w-full h-full duration-700 preserve-3d transition-transform ${
                   flippedCards[index] ? 'rotate-y-180' : ''
                 }`}
               >
-                {/* Front Side (Gift Wrap) */}
-                <div className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 border border-white/30 shadow-md flex flex-col items-center justify-center backface-hidden z-10">
-                  <span className="text-3xl filter drop-shadow">🎁</span>
-                  <span className="text-[10px] text-white/90 font-bold tracking-wider mt-1 uppercase">
-                    Gift {index + 1}
+                {/* Front Side */}
+                <div className="absolute inset-0 w-full h-full rounded-2xl bg-white border border-slate-100 shadow-sm flex flex-col items-center justify-between p-3.5 backface-hidden z-10">
+                  <span className="text-[10px] md:text-xs font-serif font-bold tracking-widest text-blue-400">
+                    {cardDetails[index].id}
+                  </span>
+                  <span className="text-4xl md:text-5xl filter drop-shadow-sm select-none my-auto animate-pulse-glow">
+                    {cardDetails[index].emoji}
+                  </span>
+                  <span className="text-[8px] md:text-[9px] text-slate-400 font-bold tracking-widest uppercase">
+                    TAP TO REVEAL
                   </span>
                 </div>
 
                 {/* Back Side (Message) */}
-                <div className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-amber-100 to-yellow-50 text-indigo-950 p-2.5 border border-amber-200 shadow-md flex items-center justify-center rotate-y-180 backface-hidden z-20 overflow-y-auto">
-                  <p className="text-[10px] leading-snug font-bold text-center text-indigo-950 select-text overflow-wrap-break-word">
+                <div className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 text-purple-950 p-3 border border-purple-100 shadow-md flex items-center justify-center rotate-y-180 backface-hidden z-20 overflow-y-auto scrollbar-none">
+                  <p className="text-[10px] md:text-xs leading-normal font-bold text-center text-purple-950 select-text overflow-wrap-break-word">
                     {message}
                   </p>
                 </div>

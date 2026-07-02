@@ -80,7 +80,7 @@ export const BirthdayPopup = ({ isActive }) => {
         initial={{ opacity: 0, scale: 0.8, y: 50 }}
         animate={isActive ? { opacity: 1, scale: 1, y: 0 } : {}}
         transition={{ type: 'spring', damping: 15, stiffness: 80, delay: 0.2 }}
-        className="w-full max-w-sm glass-card border border-white/60 p-8 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-center items-center min-h-[400px]"
+        className="w-full max-w-sm  p-8 rounded-3xl text-center relative z-20 flex flex-col justify-between items-center min-h-[80vh]"
       >
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
@@ -104,7 +104,7 @@ export const BirthdayPopup = ({ isActive }) => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={isActive ? { opacity: 1, scale: 1 } : {}}
           transition={{ type: 'spring', damping: 8, delay: 0.9 }}
-          className="text-5xl font-black font-sans tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-600 via-purple-500 to-indigo-600 mb-6 filter drop-shadow-[0_1px_4px_rgba(130,50,150,0.15)]"
+          className="text-7xl font-black font-sans tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-600 via-purple-500 to-indigo-600 mb-6 filter drop-shadow-[0_1px_4px_rgba(130,50,150,0.15)]"
         >
           {recipientName}
         </motion.h1>

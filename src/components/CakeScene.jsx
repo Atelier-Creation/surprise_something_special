@@ -43,7 +43,7 @@ export const CakeScene = ({ isActive }) => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={isActive ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-sm glass-card border border-white/60 p-6 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-between items-center min-h-[460px]"
+        className="w-full max-w-sm p-6 rounded-3xl text-center relative z-20 flex flex-col justify-between items-center min-h-[80vh]"
       >
         <div>
           <h2 className="text-2xl font-bold font-sans text-purple-600 mb-1">

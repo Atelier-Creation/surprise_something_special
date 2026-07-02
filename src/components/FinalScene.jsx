@@ -60,7 +60,7 @@ export const FinalScene = ({ isActive }) => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={isActive ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-sm glass-card border border-white/60 p-8 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-center items-center min-h-[440px]"
+        className="w-full max-w-sm  p-8 rounded-3xl text-center  relative z-20 flex flex-col justify-between items-center min-h-[80vh]"
       >
         {/* Giant Beating Heart */}
         <motion.div

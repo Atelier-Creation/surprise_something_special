@@ -12,7 +12,7 @@ export const WelcomeScreen = () => {
 
   const escapeNoButton = () => {
     if (!cardRef.current) return;
-    
+
     // Increment escape counter
     const nextCount = noCount + 1;
     setNoCount(nextCount);
@@ -25,7 +25,7 @@ export const WelcomeScreen = () => {
     const cardRect = cardRef.current.getBoundingClientRect();
     const btnWidth = 100;
     const btnHeight = 48;
-    
+
     // Bounds within the card to prevent jumping off-screen
     const maxX = cardRect.width / 2 - btnWidth;
     const minX = -cardRect.width / 2 + btnWidth;
@@ -56,7 +56,7 @@ export const WelcomeScreen = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, ease: 'easeOut' }}
-        className="w-full max-w-sm glass-card border border-white/60 p-8 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-center min-h-[350px]"
+        className="w-full max-w-sm p-8 rounded-3xl text-center shadow-lg relative z-20 flex flex-col justify-between min-h-[80vh]"
       >
         <motion.span
           animate={{ rotate: [0, 10, -10, 10, 0] }}
@@ -66,10 +66,10 @@ export const WelcomeScreen = () => {
           🎁
         </motion.span>
 
-        <h1 className="text-3xl font-bold font-sans mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 leading-tight">
+        <h1 className="text-3xl capitalize font-bold font-sans mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 leading-tight">
           Are you ready for your birthday surprise?
         </h1>
-        
+
         <p className="text-purple-950/60 text-sm mb-8 font-medium">
           Turn up your volume 🔊 and get ready for a little magic!
         </p>
@@ -88,8 +88,8 @@ export const WelcomeScreen = () => {
           {/* NO BUTTON */}
           <motion.button
             onClick={escapeNoButton}
-            animate={{ 
-              x: noBtnPos.x, 
+            animate={{
+              x: noBtnPos.x,
               y: noBtnPos.y,
               scale: noCount > 5 ? 0.75 : 1,
               rotate: noCount * 15

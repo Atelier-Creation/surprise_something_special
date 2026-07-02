@@ -26,7 +26,7 @@ export const GalleryScene = ({ isActive }) => {
     },
     {
       id: 4,
-      src: 'https://images.unsplash.com/photo-1501901642955-f22416c94a8f?auto=format&fit=crop&q=80&w=600',
+      src: 'https://images.pexels.com/photos/31760918/pexels-photo-31760918.jpeg',
       caption: 'straight out of a movie 🌅',
     },
     {
@@ -66,7 +66,7 @@ export const GalleryScene = ({ isActive }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={isActive ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="grid grid-cols-2 gap-4 px-2 pb-32 overflow-y-auto max-h-[calc(100vh-220px)] w-full max-w-md z-20 scrollbar-none"
+        className="grid grid-cols-2 gap-4 px-2 pb-32 overflow-y-auto max-h-[calc(100vh-260px)] w-full max-w-md z-20 scrollbar-none"
         style={{ touchAction: 'pan-y' }}
       >
         {photos.map((photo, index) => (
@@ -94,7 +94,7 @@ export const GalleryScene = ({ isActive }) => {
 
       {/* Floating Continue Button */}
       {isActive && (
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30">
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30">
           <motion.button
             onClick={nextSlide}
             initial={{ opacity: 0, y: 15 }}
