@@ -149,7 +149,7 @@ export const BirthdayPopup = ({ isActive }) => {
             initial={{ opacity: 0, scale: 0, rotate: -45 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             exit={{ opacity: 0, scale: 0, rotate: -45 }}
-            transition={{ type: 'spring', damping: 15, stiffness: 80 }}
+            // transition={{ type: 'spring', damping: 15, stiffness: 80 }}
             src={haritha2}
             alt="Haritha 1"
             className="absolute left-4 md:-left-15 bottom-0 w-36 h-36 md:w-120 md:h-120 z-20 object-contain animate-float-slow"
@@ -182,7 +182,7 @@ export const BirthdayPopup = ({ isActive }) => {
             initial={{ opacity: 0, scale: 0, rotate: 45 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             exit={{ opacity: 0, scale: 0, rotate: 45 }}
-            transition={{ type: 'spring', damping: 15, stiffness: 80 }}
+            // transition={{ type: 'spring', damping: 15, stiffness: 80 }}
             src={haritha1}
             alt="Haritha 2"
             style={{ transform: 'scaleX(-1)' }}
