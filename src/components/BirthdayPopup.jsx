@@ -7,24 +7,15 @@ import bouquet from "../assets/boque.png";
 import crownImg from '../assets/crown.png';
 import haritha1 from '../assets/haritha1.png';
 import haritha2 from '../assets/haritha2.PNG';
-import partyhat from '../assets/partyhat.png';
+import partyhat from '../assets/balloons.png';
+import camera from '../assets/camera.png';
+import giftbox from '../assets/GiftBoxes.png';
+import partyWizzela from '../assets/party_wizzela.png';
 
 // Inline SVGs for mockup stickers
 
 
-const PartyHatSVG = ({ className, style }) => (
-  <svg className={`${className} drop-shadow-md select-none`} style={style} viewBox="0 0 80 80">
-    <path d="M 40,10 L 16,65 L 64,65 Z" fill="#E91E63" />
-    <path d="M 33,26 L 47,26 L 50,34 L 30,34 Z" fill="#00BCD4" />
-    <path d="M 27,41 L 53,41 L 56,49 L 24,49 Z" fill="#FFEB3B" />
-    <path d="M 21,56 L 59,56 L 62,64 L 18,64 Z" fill="#8BC34A" />
-    <rect x="12" y="65" width="56" height="4" rx="2" fill="#FF9800" />
-    <circle cx="40" cy="8" r="6" fill="#FFEB3B" />
-    <line x1="40" y1="2" x2="40" y2="5" stroke="#FF9800" strokeWidth="1.5" />
-    <line x1="34" y1="4" x2="36" y2="6" stroke="#FF9800" strokeWidth="1.5" />
-    <line x1="46" y1="4" x2="44" y2="6" stroke="#FF9800" strokeWidth="1.5" />
-  </svg>
-);
+
 
 const BalloonsSVG = ({ className, style }) => (
   <svg className={`${className} drop-shadow-md select-none`} style={style} viewBox="0 0 80 100">
@@ -137,10 +128,10 @@ export const BirthdayPopup = ({ isActive }) => {
       <img src={partyhat}
         className="absolute left-4 md:left-36 top-[18%] w-16 h-16 md:w-24 md:h-24 z-20 animate-float-slow"
       />
-      
-      <GiftBoxesSVG
+        {nameToDisplay === "harithaa" ? (<></>):( 
+      <img src={partyWizzela}
         className="absolute left-2 md:left-16 top-[48%] w-20 h-20 md:w-28 md:h-28 z-20 animate-float-fast"
-      />
+      />)}
       
       <AnimatePresence mode="wait">
         {nameToDisplay === "harithaa" ? (
@@ -152,7 +143,7 @@ export const BirthdayPopup = ({ isActive }) => {
             // transition={{ type: 'spring', damping: 15, stiffness: 80 }}
             src={haritha2}
             alt="Haritha 1"
-            className="absolute left-4 md:-left-15 bottom-0 w-36 h-36 md:w-120 md:h-120 z-20 object-contain animate-float-slow"
+            className="absolute left-4 md:-left-15 -bottom-5 w-36 h-36 md:w-120 md:h-120 z-20 object-contain"
           />
         ) : (
           <motion.div
@@ -163,7 +154,7 @@ export const BirthdayPopup = ({ isActive }) => {
             transition={{ duration: 0.5 }}
             className="absolute left-8 md:left-24 bottom-26 w-18 h-22 md:w-26 md:h-32 z-20 animate-float-fast"
           >
-            <BalloonsSVG className="w-full h-full" />
+            <img src={camera} className="w-full object-contain h-full" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -186,7 +177,7 @@ export const BirthdayPopup = ({ isActive }) => {
             src={haritha1}
             alt="Haritha 2"
             style={{ transform: 'scaleX(-1)' }}
-            className="absolute right-8 md:-right-15 bottom-0 w-40 h-40 md:w-120 md:h-120 z-20 object-contain animate-float-fast"
+            className="absolute right-8 md:-right-15 bottom-0 w-40 h-40 md:w-130 md:h-130 z-20 object-contain"
           />
         ) : (
           <motion.div
@@ -198,13 +189,13 @@ export const BirthdayPopup = ({ isActive }) => {
             className="absolute right-8 md:right-32 bottom-12 w-20 h-20 md:w-28 md:h-28 z-20 animate-float-fast"
             style={{ transform: 'scaleX(-1)' }}
           >
-            <GiftBoxesSVG className="w-full h-full" />
+            <img src={camera} className="w-full object-contain h-full" />
           </motion.div>
         )}
       </AnimatePresence>
 
-      <img src={partyhat}
-        className="absolute right-2 md:right-16 top-[24%] w-16 h-16 md:w-24 md:h-24 z-20 animate-float-slow"
+      <img src={giftbox}
+        className="absolute right-2 md:right-16 top-[18%] w-16 h-16 md:w-24 md:h-24 z-20 animate-float-fast"
         style={{ transform: 'scaleX(-1)' }}
       />
 

@@ -94,18 +94,18 @@ export const FinalScene = ({ isActive }) => {
           transition={{ delay: 0.6, duration: 0.6 }}
           className="text-2xl font-bold font-sans tracking-wide text-[#600411] mb-2"
         >
-          Best Wishes From
+          Best Wishes
         </motion.h1>
         </motion.div>
 
-        <motion.h3
+        {/* <motion.h3
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isActive ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.8, duration: 0.6, type: 'spring', damping: 10 }}
           className="text-3xl font-extrabold text-[#bf1f1e] tracking-wider font-aurora my-8 filter drop-shadow-sm"
         >
           {senderName}
-        </motion.h3>
+        </motion.h3> */}
 
         {/* Replay and Share buttons */}
         <div className="flex flex-col gap-4 w-full z-35">
