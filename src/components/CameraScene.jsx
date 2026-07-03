@@ -197,7 +197,10 @@ export const CameraScene = ({ isActive }) => {
         <AnimatePresence>
           {revealedCount === 4 && (
             <motion.button
-              onClick={nextSlide}
+              onClick={() => {
+                setRevealedCount(0);
+                nextSlide();
+              }}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
