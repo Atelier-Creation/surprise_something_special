@@ -126,7 +126,7 @@ export const BirthdayPopup = ({ isActive }) => {
 
       {/* Symmetrical Left Side Stickers */}
       <img src={partyhat}
-        className="absolute left-4 md:left-36 top-[18%] w-16 h-16 md:w-24 md:h-24 z-20 animate-float-slow"
+        className="absolute left-4 md:left-36 top-[18%] w-16 h-16 md:w-24 md:h-24 z-20 animate-float-fast"
       />
         {nameToDisplay === "harithaa" ? (<></>):( 
       <img src={partyWizzela}
@@ -152,7 +152,7 @@ export const BirthdayPopup = ({ isActive }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute left-8 md:left-24 bottom-26 w-18 h-22 md:w-26 md:h-32 z-20 animate-float-fast"
+            className="absolute left-8 md:left-24 bottom-14 w-18 h-22 md:w-26 md:h-32 z-20 animate-float-fast"
           >
             <img src={camera} className="w-full object-contain h-full" />
           </motion.div>
@@ -161,8 +161,8 @@ export const BirthdayPopup = ({ isActive }) => {
 
       {/* Symmetrical Right Side Stickers (Flipped) */}
       {nameToDisplay === "harithaa" ? (<></>):( 
-      <BalloonsSVG
-        className="absolute right-4 md:right-20 top-[48%] w-18 h-22 md:w-26 md:h-32 z-20 animate-float-medium"
+      <img src={camera}
+        className="absolute object-contain right-4 md:right-20 top-[48%] w-18 h-22 md:w-26 md:h-32 z-20 animate-float-fast"
         style={{ transform: 'scaleX(-1)' }}
       />)}
 
@@ -189,7 +189,7 @@ export const BirthdayPopup = ({ isActive }) => {
             className="absolute right-8 md:right-32 bottom-12 w-20 h-20 md:w-28 md:h-28 z-20 animate-float-fast"
             style={{ transform: 'scaleX(-1)' }}
           >
-            <img src={camera} className="w-full object-contain h-full" />
+            <img src={partyhat} className="w-full object-contain h-full" />
           </motion.div>
         )}
       </AnimatePresence>

@@ -121,7 +121,7 @@ export const FinalScene = ({ isActive }) => {
             <FaShareAlt /> Share Surprise
           </motion.button> */}
 
-          <img src={poituvangaTata} className='w-full h-60'/>
+          <img src={poituvangaTata} className='w-full h-60 my-10'/>
 
           <motion.button
             onClick={resetAll}
